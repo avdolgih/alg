@@ -1,0 +1,13 @@
+{
+  "name": "ША АВ1",
+  "elements": [
+    {
+      "cards": [
+        { "x": 5, "y": 5, "width": 600, "height": 200, "color": "#F0F0F0" }
+      ],
+      "texts": [],
+      "buttons": [],
+      "parameters": []
+    }
+  ]
+}

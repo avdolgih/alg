@@ -1,10 +1,11 @@
 import type MQTTClient from "./MQTTClient";
 import Element from "./Element";
 
-export default class Input extends Element {
-  public readonly label: string;
-  public value: string;
+export default class Parameter extends Element {
+  public readonly text: string;
   public readonly topic: string;
+  public value: string;
+  public readonly demension: string;
   private client: MQTTClient;
 
   constructor(
@@ -13,38 +14,35 @@ export default class Input extends Element {
     width: number,
     height: number,
     color: string,
-    label: string,
-    value: string,
+    text: string,
     topic: string,
+    demension: string,
     client: MQTTClient
   ) {
     super(x, y, width, height, color);
-    this.label = label;
-    this.value = value;
+
+    this.text = text;
     this.topic = topic;
     this.client = client;
+    this.value = "0";
+    this.demension = demension;
+
+    this.subscribeMQTTTopic(this.topic);
+    this.reciveMQTTMessage(this.topic);
   }
 
-  //   Подписываемся на топик
   public subscribeMQTTTopic(topic: string) {
     this.client.subscribeMQTTTopic(topic);
   }
 
-  //   Установка значения
   public setValue(val: string) {
     this.value = val;
     console.log(this.value);
   }
 
-  //   Получение сообщений
   public reciveMQTTMessage(topic: string) {
     this.client.reciveMQTTMssage(topic, (data: string) => {
       this.setValue(data);
     });
-  }
-
-  //   Отправка сообщений
-  public sendMQTTMessage() {
-    this.client.sendMQTTMessage(this.topic, this.value);
   }
 }
