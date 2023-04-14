@@ -46,3 +46,5 @@ export default class Parameter extends Element {
     });
   }
 }
+
+export type ParameterInput = Omit<Parameter, "client">;

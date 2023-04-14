@@ -5,6 +5,8 @@ export default abstract class Element {
   public height: number;
   public color: string;
 
+  public readonly typeName: string;
+
   constructor(
     x: number,
     y: number,

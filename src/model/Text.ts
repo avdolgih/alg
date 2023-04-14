@@ -17,3 +17,5 @@ export default class Text extends Element {
     this.value = value;
   }
 }
+
+export type TextInput = Text;

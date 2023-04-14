@@ -31,3 +31,5 @@ export default class Button extends Element {
     this.client.sendMQTTMessage(this.topic, this.value);
   }
 }
+
+export type ButtonInput = Omit<Button, "client">;

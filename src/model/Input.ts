@@ -48,3 +48,6 @@ export default class Input extends Element {
     this.client.sendMQTTMessage(this.topic, this.value);
   }
 }
+
+// TODO: Огоспаде, переименуй
+export type InputInput = Omit<Input, "client">;

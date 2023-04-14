@@ -11,3 +11,5 @@ export default class Card extends Element {
     super(x, y, width, height, color);
   }
 }
+
+export type CardInput = Card;
