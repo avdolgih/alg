@@ -9,6 +9,8 @@
     .card {
         position: absolute;
         border-radius: 10px;
-        box-shadow:  0px 0px 5px rgba(128, 128, 128, 0.301);
+        border: solid 1px rgba(128, 128, 128, 0.411);
+        box-shadow:  0px 0px 10px rgba(128, 128, 128, 0.301);
+        z-index: -1
     }    
 </style>

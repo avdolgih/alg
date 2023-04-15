@@ -1,20 +1,19 @@
-import type Button from "./Button";
-import type Card from "./Card";
-import type Input from "./Input";
-import type MQTTClient from "./MQTTClient";
-import type Parameter from "./Parameter";
-import type Status from "./Status";
-import type Text from "./Text";
+// import type Button from "./Button";
+// import type Card from "./Card";
+// import type Input from "./Input";
+// import type MQTTClient from "../mqtt/MQTTClient";
+// import type Parameter from "./Parameter";
+// import type Status from "./Status";
+// import type Text from "./Text";
 
-type union = Button | Card | Input | Parameter | Status | Text;
+// type union = Button | Card | Input | Parameter | Status | Text;
+
+import type Element from "./Element";
 
 export default class HMI {
-  // TODO: Есть ли смысл объявлять здесь клиента MQTT и url?
-  //   public readonly MQTTClient: MQTTClient;
+  public readonly elements: Element[];
 
-  public readonly elements: union[];
-
-  constructor(elements: union[]) {
+  constructor(elements: Element[]) {
     this.elements = elements;
   }
 }

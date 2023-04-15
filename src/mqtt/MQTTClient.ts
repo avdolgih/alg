@@ -35,7 +35,8 @@ export default class MQTTClient {
   //   TODO: Следует ли изменить функцию для обеспечения полиморфизма?
   //   TODO: Также следует ли создать тип сообщения? Следует подумать над структурой сообщений.
   public sendMQTTMessage(topic: string, data: string) {
-    this.client.publish(topic, data, { qos: 2 });
+    this.client.publish(topic, data, { qos: 1 });
+    console.log("MESSAGE SENDED");
   }
 
   public subscribeMQTTTopic(topic: string) {
@@ -48,16 +49,9 @@ export default class MQTTClient {
     });
   }
 
-  public reciveMQTTMssage(subedTopic: string, callback: any) {
-    let data: string = "---";
-
-    this.client.on("message", function (topic: string, message: Buffer) {
-      if (subedTopic === topic) {
-        callback(message.toString());
-        data = message.toString();
-      }
+  public reciveMQTTMssage(callback: any) {
+    this.client.on("message", (topic, message) => {
+      callback(topic, message);
     });
-
-    return data;
   }
 }
