@@ -1,5 +1,5 @@
 {
-  "_comment": "Добавить пожар, порог, перепад",
+  "_comment": "Добавить UI пожар, порог, перепад",
   "elements": [
     {
       "type": "Text",
@@ -31,7 +31,7 @@
       "height": 0,
       "color": "black",
       "fontsize": 35,
-      "topic": ["/M1/mode/set", "/M1/mode/set"],
+      "topic": ["/M1/mode/get", "/M1/mode/set"],
       "value": "Работает"
     },
     {
@@ -42,8 +42,8 @@
       "height": 90,
       "color": "#169873",
       "text": "ПУСК",
-      "topic": ["/M1/mode/set", "/M1/mode/set"],
-      "value": ""
+      "topic": ["/M1/mode/get", "/M1/mode/set"],
+      "value": "start"
     },
     {
       "type": "Button",
@@ -53,8 +53,8 @@
       "height": 90,
       "color": "red",
       "text": "СТОП",
-      "topic": ["/M1/mode/set", "/M1/mode/set"],
-      "value": ""
+      "topic": ["/M1/mode/get", "/M1/mode/set"],
+      "value": "stop"
     },
     {
       "type": "Button",
@@ -64,8 +64,8 @@
       "height": 90,
       "color": "yellow",
       "text": "АВТО",
-      "topic": ["/M1/mode/set", "/M1/mode/set"],
-      "value": ""
+      "topic": ["/M1/mode/get", "/M1/mode/set"],
+      "value": "auto"
     },
     {
       "type": "Card",

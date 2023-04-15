@@ -5,9 +5,11 @@
     export let model: Button;
     export let client: MQTTClient
     
+// TODO: сейчас обновление UI в этом коде не работает
+
     let handleClick = (e: Event) => {
         e.preventDefault()
-        model.value != "active" ? client.sendMQTTMessage(model.topic, model.text) : null
+        model.value != "active" ? client.sendMQTTMessage(model.topic[1], model.text) : null
     }
 
     
