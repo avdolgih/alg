@@ -1,7 +1,16 @@
 <script lang="ts">
     import type Button from "../model/elements/Button";
+    import MQTT from "../mqtt/MQTT";
 
     export let model: Button;
+
+    let color: string = '#000';
+
+    if (model.state)
+    MQTT.subscribe(model.state?.topic, (val) => {
+        if (val === model.state?.val)
+            color = model.state.
+    });
 
     // TODO: сейчас обновление UI в этом коде не работает
     // function onClick(e: Event) {
@@ -13,7 +22,7 @@
     // }
 </script>
 
-<button>{model.text}</button>
+<button style:color='#045'>{model.text}</button>
 
 <!-- <button
     on:click={onClick}
