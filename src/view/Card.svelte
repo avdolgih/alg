@@ -1,6 +1,6 @@
 <script lang="ts">
-    import type Card from "../model/Card";
-    export let model: Card
+    import type Rectangle from "../model/Rectangleangle";
+    export let model: Rectangle
 </script>
 
 <div class="card" style="left: {model.x}px; top: {model.y}px; width: {model.width}px; height: {model.height}px; background-color: {model.color}"></div>

@@ -1,6 +1,6 @@
 import Element from "./Element";
 
-export default class Card extends Element {
+export default class Rectangle extends Element {
   constructor(
     x: number,
     y: number,

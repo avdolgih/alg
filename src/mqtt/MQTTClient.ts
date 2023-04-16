@@ -1,60 +1,30 @@
-// MQTTClient синглтон
 import type { Client } from "mqtt";
 import mqtt from "mqtt/dist/mqtt.min";
 
 export default class MQTTClient {
-  private static instanse: MQTTClient;
 
-  public readonly client: Client;
+  private readonly mqtt: Client;
 
   private constructor(
     url: string,
     port: number,
-    username?: string,
-    password?: string
-  ) {
-    this.client = mqtt.connect(`ws://${url}:${port}`, {
-      protocol: "ws",
-      username,
-      password,
-    });
-  }
-
-  public static getInstanse(
-    url: string,
-    port: number,
-    username: string,
-    password: string
-  ) {
-    if (!MQTTClient.instanse) {
-      MQTTClient.instanse = new MQTTClient(url, port, username, password);
+    login?: {
+      username: string,
+      password: string
     }
-    return MQTTClient.instanse;
+  ) {
+    this.mqtt = mqtt.connect(`ws://${url}:${port}`, login);
   }
 
-  //   TODO: Следует ли изменить функцию для обеспечения полиморфизма?
-  //   TODO: Также следует ли создать тип сообщения? Следует подумать над структурой сообщений.
-  public sendMQTTMessage(topic: string, data: string) {
-    this.client.publish(topic, data, {});
+  public send(topic: string, data: string) {
+    this.mqtt.publish(topic, data);
     console.log({ topic, data });
   }
 
-  public subscribeMQTTTopic(topic: string) {
-    console.log(topic);
-
-    this.client.subscribe(topic, function (err) {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log("SUBSCRIBED");
-      }
-    });
-  }
-
-  public reciveMQTTMssage(callback: any) {
-    this.client.on("message", (topic, message) => {
-      console.log(topic);
-      callback(topic, message);
-    });
+  public subscribe(topic: string, callback: (topic: string, msg: string) => void) {
+    this.mqtt.subscribe(topic, (err) => {
+      if (!err)
+        this.mqtt.on('message', callback);
+    })
   }
 }

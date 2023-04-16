@@ -1,7 +1,7 @@
 <!-- TODO: Разбить на range input и обычный -->
 <script lang="ts">
     import type Input from "../model/Input";
-    import type MQTTClient from "../mqtt/MQTTClient";
+    import type MQTTClient from "../mqtt/MQTTClientTClientt
 
     
     export let model: Input
@@ -14,7 +14,7 @@
     }
 
     let sendHandler = (e: Event) => {
-        client.sendMQTTMessage(model.topic, model.value)
+        client.send(model.topic, model.value)
     }
 </script>
 
