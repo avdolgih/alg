@@ -1,37 +1,32 @@
 <!-- TODO: Разбить на range input и обычный -->
 <script lang="ts">
-    import type Input from "../model/Input";
-    import type MQTTClient from "../mqtt/MQTTClientTClientt
-
-    
+  import type Input from "../model/elements/Input";
     export let model: Input
-    export let client: MQTTClient
 
-    let changeHandler = (e: Event) => {
-        const target = e.target as HTMLInputElement;
-        e.preventDefault()
-        model.setValue(target.value)
-    }
+    // let changeHandler = (e: Event) => {
+    //     const target = e.target as HTMLInputElement;
+    //     e.preventDefault()
+    //     model.setValue(target.value)
+    // }
 
-    let sendHandler = (e: Event) => {
-        client.send(model.topic, model.value)
-    }
+    // let sendHandler = (e: Event) => {
+    //     client.send(model.topic, model.value)
+    // }
 </script>
 
-<form on:submit={sendHandler} style="left: {model.x}px; top: {model.y}px; width: {model.width}px; height: {model.height}px; background-color: {model.color}">
-    <label for={model.topic}>{model.label}:</label>
+<form >
+    <label for={model.state?.topic}>{model.label}:</label>
     <input 
-    id={model.topic}
+    id={model.state?.topic}
     autocomplete="off"
-    value={model.value} 
-    on:change={changeHandler} 
+    value={model.state?.val} 
+   
     />
 </form>
 
 
 <style>
     form {
-        position: absolute;
         padding: 15px 30px 15px 30px ;
         border-radius: 10px;
         display: flex;

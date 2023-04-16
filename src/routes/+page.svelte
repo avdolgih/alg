@@ -1,15 +1,8 @@
 <script lang="ts">
-    import HMI from "../model/HMI";
-
-    import Elements from "../view/Elements.svelte";
-    import settings from "../serverMock/SHA_AV1.json"
-
-    // const HMIString = fs.readFileSync("src/serverMock/SHA_AV1.json").toString()
-    const hmi: HMI = HMI.parseJSON(settings);
-  
+    import HMIView from "../view/HMI.svelte"
+    import data from "../data/data"
 
 
-    // console.log(hmi);
     
 
     // if (browser) {
@@ -43,4 +36,4 @@
     // }
 </script>
 
-<Elements elements={hmi.elements} />
+<HMIView hmi={data.V5} />
