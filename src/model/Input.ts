@@ -3,7 +3,8 @@ import Element from "./Element";
 export default class Input extends Element {
   public readonly label: string;
   public value: string;
-  public readonly topic: string[];
+  public readonly topicSET: string[];
+  public readonly topicGET: string[];
 
   constructor(
     x: number,
@@ -13,12 +14,14 @@ export default class Input extends Element {
     color: string,
     label: string,
     value: string,
-    topic: string[]
+    topicGET: string[],
+    topicSET: string[]
   ) {
     super(x, y, width, height, color);
     this.label = label;
     this.value = value;
-    this.topic = topic;
+    this.topicSET = topicSET;
+    this.topicGET = topicGET;
   }
 
   //   Установка значения

@@ -3,7 +3,8 @@ import Element from "./Element";
 export default class Text extends Element {
   public readonly fontsize: number;
   public readonly value: string;
-  public readonly topic: string[];
+  public readonly topicSET: string[];
+  public readonly topicGET: string[];
   constructor(
     x: number,
     y: number,
@@ -11,13 +12,15 @@ export default class Text extends Element {
     height: number,
     color: string,
     fontsize: number,
-    topic: string[],
+    topicGET: string[],
+    topicSET: string[],
     value: string
   ) {
     super(x, y, width, height, color);
     this.fontsize = fontsize;
     this.value = value;
-    this.topic = topic;
+    this.topicGET = topicGET;
+    this.topicSET = topicSET;
   }
 }
 

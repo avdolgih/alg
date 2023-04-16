@@ -3,37 +3,39 @@
   "elements": [
     {
       "type": "Text",
-      "x": 350,
+      "x": 400,
       "y": 10,
       "width": 600,
       "height": 100,
       "color": "",
       "fontsize": 60,
-      "topic": "",
+      "topicGET": [],
+      "topicSET": [],
       "value": "ША ВД1"
     },
     {
       "type": "Text",
       "x": 140,
-      "y": 225,
-      "width": 200,
+      "y": 220,
+      "width": 150,
       "height": 0,
-      "color": "#fff",
-      "fontsize": 32,
-      "topic": "",
-      "value": "Вентилятор 1"
+      "color": "black",
+      "fontsize": 35,
+      "topicGET": [],
+      "topicSET": [],
+      "value": "Вентилятор"
     },
-
     {
       "type": "Text",
       "x": 350,
-      "y": 225,
+      "y": 220,
       "width": 200,
       "height": 0,
-      "color": "#fff",
-      "fontsize": 32,
-      "topic": "/M1/mode",
-      "value": "Работает"
+      "color": "black",
+      "fontsize": 35,
+      "topicGET": ["/M1/mode/get_hmi"],
+      "topicSET": [],
+      "value": ""
     },
     {
       "type": "Button",
@@ -43,8 +45,10 @@
       "height": 90,
       "color": "#169873",
       "text": "ПУСК",
-      "topic": "/M1/mode/action",
-      "value": "START"
+      "topicGET": ["/M1/mode/get"],
+      "topicSET": ["/M1/mode/set"],
+      "value": "",
+      "action": "start"
     },
     {
       "type": "Button",
@@ -54,8 +58,10 @@
       "height": 90,
       "color": "red",
       "text": "СТОП",
-      "topic": "/M1/mode/action",
-      "value": "STOP"
+      "topicGET": ["/M1/mode/get"],
+      "topicSET": ["/M1/mode/set"],
+      "value": "",
+      "action": "stop"
     },
     {
       "type": "Button",
@@ -63,10 +69,12 @@
       "y": 230,
       "width": 100,
       "height": 90,
-      "color": "#169873",
+      "color": "yellow",
       "text": "АВТО",
-      "topic": "/M1/mode/action",
-      "value": "AUTO"
+      "topicGET": ["/M1/mode/get"],
+      "topicSET": ["/M1/mode/set"],
+      "value": "",
+      "action": "auto"
     },
     {
       "type": "Card",

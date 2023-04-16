@@ -35,11 +35,13 @@ export default class MQTTClient {
   //   TODO: Следует ли изменить функцию для обеспечения полиморфизма?
   //   TODO: Также следует ли создать тип сообщения? Следует подумать над структурой сообщений.
   public sendMQTTMessage(topic: string, data: string) {
-    this.client.publish(topic, data, { qos: 1 });
-    console.log("MESSAGE SENDED");
+    this.client.publish(topic, data, {});
+    console.log({ topic, data });
   }
 
   public subscribeMQTTTopic(topic: string) {
+    console.log(topic);
+
     this.client.subscribe(topic, function (err) {
       if (err) {
         console.log(err);
@@ -51,6 +53,7 @@ export default class MQTTClient {
 
   public reciveMQTTMssage(callback: any) {
     this.client.on("message", (topic, message) => {
+      console.log(topic);
       callback(topic, message);
     });
   }

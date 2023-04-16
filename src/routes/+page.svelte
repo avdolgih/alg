@@ -14,23 +14,21 @@
     import { MQTTClientStore } from "./store";
     import { browser } from "$app/environment";
 
-    import settings from "../serverMock/SHA_AV1.json"
-    console.log(settings.elements);
-
-
+    import settings from "../serverMock/SHA_V18V18R.json"
+    
     // TODO: РУГАЕТСЯ НА ТИПЫ
 
     let elements = settings.elements.map((element)=>{
         
         switch (element.type) {
             case "Text":
-                return new Text(element.x, element.y, element.width, element.height, element.color, element.fontsize, element.topic, element.value)
+                return new Text(element.x, element.y, element.width, element.height, element.color, element.fontsize, element.topicGET, element.topicSET, element.value)
             case "Card":
                 return  new Card(element.x, element.y, element.width, element.height, element.color)
             case "Button":
-                return new Button(element.x, element.y, element.width, element.height, element.color, element.text, element.topic, element.value)
+                return new Button(element.x, element.y, element.width, element.height, element.color, element.text,  element.topicGET, element.topicSET, element.value, element.action)
             case "Input":
-               return   new Input(element.x, element.y, element.width, element.height, element.color, element.label, element.value, element.topic)
+               return   new Input(element.x, element.y, element.width, element.height, element.color, element.label, element.value,  element.topicGET, element.topicSET)
             default:
                 break;
         }
@@ -38,7 +36,6 @@
 
     
     let hmi = new HMI(elements)
-    console.log(hmi.constructor.name);
     
 
     if (browser) {
@@ -48,18 +45,22 @@
         MQTTClientStore.set(client)
 
         // Подписываемся на топики
-        hmi.elements.map((element)=>{element.topic && client.subscribeMQTTTopic(element.topic)})
+        hmi.elements.map((element)=>{
+            if (element.hasOwnProperty("topicGET")) {
+                console.log(element.topicGET);
+                client.subscribeMQTTTopic(element.topicGET)
+            }
+        })
 
         // Функция обновления данных по топику
         let updateState = (topic: string, value: string) => {
-            
         // Определяем UI для обновления
-        let newState = hmi.elements.map((element)=>{
-            if (element?.topic === topic) {
-                element.value = value.toString()
-            }
-            return element
-                })
+            let newState = hmi.elements.map((element)=>{
+                if (element?.topicGET?.includes(topic)) {
+                    element.value = value.toString()
+                }
+                return element
+            })
             hmi = new HMI(newState)
         }
 

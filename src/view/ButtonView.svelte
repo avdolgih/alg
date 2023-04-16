@@ -6,18 +6,16 @@
     export let client: MQTTClient
     
 // TODO: сейчас обновление UI в этом коде не работает
-
     let handleClick = (e: Event) => {
         e.preventDefault()
-        model.value != "active" ? client.sendMQTTMessage(model.topic[1], model.text) : null
+        
+        model.value != model.action ? client.sendMQTTMessage(model.topicSET[0], model.action) : null
     }
-
-    
 </script>
 
 <button 
 on:click={handleClick}
-    style="left: {model.x}px; top: {model.y}px; width: {model.width}px; height: {model.height}px; background-color: {model.value === "active" ? model.color :"gray"}">
+    style="left: {model.x}px; top: {model.y}px; width: {model.width}px; height: {model.height}px; background-color: {model.value === model.action ? model.color :"#DFDFDF"}">
         {model.text}
 </button>
 
