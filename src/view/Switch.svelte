@@ -3,7 +3,9 @@
     export let model: Switch
 </script>
 
-<p style="font-size: {model.fontsize}px;">{model.topic.topic}</p>
+<p style="font-size: {model.fontsize}px;">
+    {model.state.text}
+</p>
 
 <style>
     p {

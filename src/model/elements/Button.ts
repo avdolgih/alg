@@ -35,4 +35,8 @@ export default class Button extends Element {
 
     return new Button(x, y, width, height, color, text, state, click);
   }
+
+  public updateState(value: string): void {
+    this.state?.updateState(value);
+  }
 }

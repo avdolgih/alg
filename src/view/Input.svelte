@@ -1,17 +1,7 @@
-<!-- TODO: Разбить на range input и обычный -->
 <script lang="ts">
   import type Input from "../model/elements/Input";
     export let model: Input
 
-    // let changeHandler = (e: Event) => {
-    //     const target = e.target as HTMLInputElement;
-    //     e.preventDefault()
-    //     model.setValue(target.value)
-    // }
-
-    // let sendHandler = (e: Event) => {
-    //     client.send(model.topic, model.value)
-    // }
 </script>
 
 <form >

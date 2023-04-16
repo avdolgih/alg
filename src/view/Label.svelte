@@ -8,5 +8,6 @@
 <style>
     p {
         font-family: Roboto, Geneva, Tahoma, sans-serif;
+        width: 100%;
     }
 </style>

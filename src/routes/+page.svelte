@@ -1,39 +1,45 @@
 <script lang="ts">
     import HMIView from "../view/HMI.svelte"
     import data from "../data/data"
+    import HMI from "../model/HMI";
+    import type Element from "../model/elements/Element";
+    import MQTTClient from "../mqtt/MQTTClient";
+    import { mqttClient } from "../store";
 
+    // Выбор шкафа
+    import { name } from "../settings";
 
-    
+    let client = MQTTClient.getInstanse('test.mosquitto.org', 8081)
 
-    // if (browser) {
-    //     let client = MQTTClient.getInstanse("test.mosquitto.org", 8081, "", "");
+    let _data = data[name]
+    // Определим топики на подпись
+    let subTopics: string[] = []
+    _data.elements.map((element)=>{
+        if (element.hasOwnProperty('state')) {
+            subTopics.push(element.state.topic)
+        }
+    })
 
-    //     // TODO: Для корректной работы экспорта клиента требуется отправить его в стор. Надо подумать как исправить.
-    //     MQTTClientStore.set(client);
+    let updateState = (topic: string, message: string) => {
+        let newState: Element[] = []
+        _data.elements.map((element)=>{
+            if (element.hasOwnProperty("state")) {
+                if (element.state.topic === topic) {
+                    element.updateState(message)
+                }
+                newState.push(element)
+            } else {newState.push(element)}
+            
+        })
+        
+        _data = new HMI(newState)
+        console.log({_data, newState});
+        
+    }
 
-    //     // Подписываемся на топики
-    //     hmi.elements.map((element) => {
-    //         if (element.hasOwnProperty("topicGET")) {
-    //             console.log(element.topicGET);
-    //             client.subscribeMQTTTopic(element.topicGET);
-    //         }
-    //     });
-
-    //     // Функция обновления данных по топику
-    //     let updateState = (topic: string, value: string) => {
-    //         // Определяем UI для обновления
-    //         let newState = hmi.elements.map((element) => {
-    //             if (element?.topicGET?.includes(topic)) {
-    //                 element.value = value.toString();
-    //             }
-    //             return element;
-    //         });
-    //         hmi = new HMI(newState);
-    //     };
-
-    //     // Подписываемся на приходящие сообщения
-    //     client.reciveMQTTMssage(updateState);
-    // }
+    // Подписываемся на топики
+    client.subscribe(subTopics, updateState)
+    mqttClient.set(client)
 </script>
 
-<HMIView hmi={data.V5} />
+<HMIView hmi={_data}/>

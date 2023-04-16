@@ -13,11 +13,9 @@
     import LabelView from "./Label.svelte"
     import SwitchView from "./Switch.svelte"
     import Switch from "../model/elements/Switch";
-  import MQTTClient from "../mqtt/MQTTClient";
 
     
     export let element: Element;
-    let client = new MQTTClient("test.mosquitto.org", 8081)
 </script>
 
 <div style="left: {element.x}px; top: {element.y}px; width: {element.width}px; height: {element.height}px;">
