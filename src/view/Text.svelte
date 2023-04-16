@@ -1,5 +1,5 @@
 <script lang="ts">
-    import type Text from "../model/Labell";
+    import type Text from "../model/elements/Label";
     export let model: Text
 </script>
 

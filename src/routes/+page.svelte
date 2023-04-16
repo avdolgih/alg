@@ -1,13 +1,16 @@
 <script lang="ts">
     import HMI from "../model/HMI";
-    import fs from "fs";
+
     import Elements from "../view/Elements.svelte";
+    import settings from "../serverMock/SHA_AV1.json"
+
+    // const HMIString = fs.readFileSync("src/serverMock/SHA_AV1.json").toString()
+    const hmi: HMI = HMI.parseJSON(settings);
+  
 
 
-    const HMIJson = fs
-        .readFileSync("../serverMock/SHA_V18V18R.json")
-        .toString();
-    const hmi: HMI = HMI.parseJSON(HMIJson);
+    // console.log(hmi);
+    
 
     // if (browser) {
     //     let client = MQTTClient.getInstanse("test.mosquitto.org", 8081, "", "");

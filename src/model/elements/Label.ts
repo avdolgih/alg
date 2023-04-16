@@ -18,15 +18,14 @@ export default class Label extends Element {
     this.value = value;
   }
 
-  public static parseJson(json: string): Label {
-    const e = JSON.parse(json);
-    const x: number = parseInt(e.x);
-    const y: number = parseInt(e.y);
-    const width: number = parseInt(e.width);
-    const height: number = parseInt(e.height);
+  public static parseJson(e: Label): Label {
+    const x: number = Number(e.x);
+    const y: number = Number(e.y);
+    const width: number = Number(e.width);
+    const height: number = Number(e.height);
     const color: string = e.color;
-    const fontsize: number = parseInt(e.fontsize);
+    const fontsize: number = Number(e.fontsize);
     const value: string = e.value;
-    return new Label(x, y, width, height, color, fontsize, value)
+    return new Label(x, y, width, height, color, fontsize, value);
   }
 }
