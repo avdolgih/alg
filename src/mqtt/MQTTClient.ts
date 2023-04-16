@@ -18,7 +18,6 @@ export default class MQTTClient {
 
   public send(topic: string, data: string) {
     this.mqtt.publish(topic, data);
-    console.log({ topic, data });
   }
 
   public subscribe(topic: string, callback: (topic: string, msg: string) => void) {
