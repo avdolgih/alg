@@ -17,7 +17,7 @@ export default class Button extends Element {
     click?: TopicVal
   ) {
     super(x, y, width, height, color);
-
+    
     this.text = text;
     this.state = state;
     this.click = click;

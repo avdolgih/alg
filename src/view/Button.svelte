@@ -1,21 +1,21 @@
 <script lang="ts">
     import type Button from "../model/elements/Button";
-    import type MQTTClient from "../mqtt/MQTTClientTClientt
 
     export let model: Button;
-    export let client: MQTTClient;
 
     // TODO: сейчас обновление UI в этом коде не работает
-    function onClick(e: Event) {
-        e.preventDefault();
+    // function onClick(e: Event) {
+    //     e.preventDefault();
 
-        model.value != model.action
-            ? client.send(model.topicSET[0], model.action)
-            : null;
-    }
+    //     model.value != model.action
+    //         ? client.send(model.topicSET[0], model.action)
+    //         : null;
+    // }
 </script>
 
-<button
+<button>{model.text}</button>
+
+<!-- <button
     on:click={onClick}
     style="left: {model.x}px; top: {model.y}px; width: {model.width}px; height: {model.height}px; background-color: {model.value ===
     model.action
@@ -23,7 +23,7 @@
         : '#DFDFDF'}"
 >
     {model.text}
-</button>
+</button> -->
 
 <style>
     button {
