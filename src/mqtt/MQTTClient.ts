@@ -1,50 +1,24 @@
 import type { Client } from "mqtt";
 import mqtt from "mqtt/dist/mqtt.min";
 
-export default class MQTTClient {
-  private static instanse: MQTTClient;
+export default class MQTT {
+  private static readonly mqtt: Client = mqtt.connect(
+    "ws://test.mosquitto.org:8081"
+  );
 
-  public readonly client: Client;
-
-  private constructor(
-    url: string,
-    port: number,
-    username?: string,
-    password?: string
-  ) {
-    this.client = mqtt.connect(`ws://${url}:${port}`, {
-      protocol: "ws",
-      username,
-      password,
-    });
+  public static send(topic: string, data: string) {
+    MQTT.mqtt.publish(topic, data);
   }
 
-  public static getInstanse(
-    url: string,
-    port: number,
-    username?: string,
-    password?: string
+  public static subscribe(
+    topic: string | string[],
+    callback: (val: string) => void
   ) {
-    if (!MQTTClient.instanse) {
-      MQTTClient.instanse = new MQTTClient(url, port, username, password);
-    }
-    return MQTTClient.instanse;
-  }
-
-  public subscribe(
-    topic: string[] | string,
-    callback: (topic: string, message: string) => void
-  ) {
-    this.client.subscribe(topic, (err) => {
+    MQTT.mqtt.subscribe(topic, (err) => {
       if (!err)
-        this.client.on("message", (topic, message) => {
-          let _message = message.toString();
-          callback(topic, _message);
+        MQTT.mqtt.on("message", (topic, msg) => {
+          callback(msg.toString());
         });
     });
-  }
-
-  public send(topic: string, data: string) {
-    this.client.publish(topic, data);
   }
 }

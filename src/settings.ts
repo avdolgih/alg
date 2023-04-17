@@ -1,3 +1,3 @@
-const name = "V18V18R";
+const name = "V5";
 
 export { name };

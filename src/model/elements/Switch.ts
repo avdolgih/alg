@@ -4,19 +4,21 @@ import Element from "./Element";
 export default class Switch extends Element {
   public readonly fontsize: number;
   public readonly state: TopicBool;
+  public readonly textColor: string;
 
   constructor(
     x: number,
     y: number,
     width: number,
     height: number,
-    color: string,
+    textColor: string,
     fontsize: number,
     state: TopicBool
   ) {
-    super(x, y, width, height, color);
+    super(x, y, width, height);
     this.fontsize = fontsize;
     this.state = state;
+    this.textColor = textColor;
   }
 
   // public static parseJson(e: Switch): Switch {

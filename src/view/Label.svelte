@@ -1,13 +1,17 @@
 <script lang="ts">
-    import type Label from "../model/elements/Label";
-    export let model: Label
+  import type Label from "../model/elements/Label";
+  export let model: Label;
+  console.log(model.value);
 </script>
 
-<span style="font-size: {model.fontsize}px; height: 100%;">{model.value}</span>
+<span style="font-size: {model.fontsize}px; font-size=50px;">{model.value}</span
+>
 
 <style>
-    span {
-        font-family: Roboto, Geneva, Tahoma, sans-serif;
-        width: 100%;
-    }
+  span {
+    color: black;
+    height: 100%;
+    font-family: Roboto, Geneva, Tahoma, sans-serif;
+    width: 100%;
+  }
 </style>
