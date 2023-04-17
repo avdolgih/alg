@@ -3,6 +3,7 @@ import Button from "../model/elements/Button";
 import Label from "../model/elements/Label";
 import Rectangle from "../model/elements/Rectangle";
 import Switch from "../model/elements/Switch";
+import Input from "../model/elements/Input";
 import TopicBool from "../model/mqtt/TopicBool";
 import TopicVal from "../model/mqtt/TopicVal";
 
@@ -819,9 +820,9 @@ export default {
   ]),
   V23: new HMI([
     new Label(370, 40, 600, 100, "", 80, "ША В23"),
-    new Label(100, 200, 150, 0, "black", 55, "В23"),
+    new Label(70, 200, 150, 0, "black", 55, "В23"),
     new Switch(
-      400,
+      180,
       200,
       200,
       0,
@@ -829,6 +830,20 @@ export default {
       55,
       new TopicBool("/", "Работает", "Ожидает")
     ),
+    new Label(450, 200, 150, 0, "black", 55, "Температура"),
+    new Input(
+      790,
+      200,
+      100,
+      60,
+      "black",
+      "white",
+      55,
+      "100",
+      new TopicVal("", "100"),
+      new TopicVal("", "100")
+    ),
+    new Label(915, 200, 150, 0, "black", 55, "C°"),
     new Button(
       15,
       380,
@@ -1101,7 +1116,17 @@ export default {
     new Label(370, 40, 600, 100, "", 80, "ША ВД1"),
     new Label(100, 200, 150, 0, "black", 55, "ВД1"),
     new Switch(
-      400,
+      220,
+      200,
+      200,
+      0,
+      "black",
+      55,
+      new TopicBool("/", "Работает", "Ожидает")
+    ),
+    new Label(550, 200, 150, 0, "black", 55, "ПД1"),
+    new Switch(
+      670,
       200,
       200,
       0,
@@ -1151,7 +1176,17 @@ export default {
     new Label(370, 40, 600, 100, "", 80, "ША ВД2"),
     new Label(100, 200, 150, 0, "black", 55, "ВД2"),
     new Switch(
-      400,
+      220,
+      200,
+      200,
+      0,
+      "black",
+      55,
+      new TopicBool("/", "Работает", "Ожидает")
+    ),
+    new Label(550, 200, 150, 0, "black", 55, "ПД2"),
+    new Switch(
+      670,
       200,
       200,
       0,
@@ -1299,9 +1334,9 @@ export default {
   ]),
   P10P10R: new HMI([
     new Label(270, 40, 600, 100, "", 80, "ША П10П10Р"),
-    new Label(100, 200, 150, 0, "black", 55, "П10"),
+    new Label(60, 200, 150, 0, "black", 55, "П10"),
     new Switch(
-      400,
+      200,
       200,
       200,
       0,
@@ -1309,9 +1344,19 @@ export default {
       55,
       new TopicBool("/", "Работает", "Ожидает")
     ),
-    new Label(100, 290, 150, 0, "black", 55, "П10Р"),
+    new Label(490, 200, 150, 0, "black", 55, "Заслонка"),
     new Switch(
-      400,
+      740,
+      200,
+      200,
+      0,
+      "black",
+      55,
+      new TopicBool("/", "Работает", "Ожидает")
+    ),
+    new Label(60, 290, 150, 0, "black", 55, "П10Р"),
+    new Switch(
+      200,
       290,
       200,
       0,
@@ -1319,6 +1364,20 @@ export default {
       55,
       new TopicBool("/", "Работает", "Ожидает")
     ),
+    new Label(490, 290, 150, 0, "black", 55, "Нагреватель"),
+    new Input(
+      820,
+      290,
+      95,
+      65,
+      "black",
+      "white",
+      55,
+      "100",
+      new TopicVal("", "100"),
+      new TopicVal("", "")
+    ),
+    new Label(930, 290, 150, 0, "black", 55, "%"),
     new Button(
       15,
       420,
@@ -1359,9 +1418,9 @@ export default {
   ]),
   P11P11R: new HMI([
     new Label(270, 40, 600, 100, "", 80, "ША П11П11Р"),
-    new Label(100, 200, 150, 0, "black", 55, "П11"),
+    new Label(60, 200, 150, 0, "black", 55, "П11"),
     new Switch(
-      400,
+      200,
       200,
       200,
       0,
@@ -1369,9 +1428,19 @@ export default {
       55,
       new TopicBool("/", "Работает", "Ожидает")
     ),
-    new Label(100, 290, 150, 0, "black", 55, "П11Р"),
+    new Label(490, 200, 150, 0, "black", 55, "Заслонка"),
     new Switch(
-      400,
+      740,
+      200,
+      200,
+      0,
+      "black",
+      55,
+      new TopicBool("/", "Работает", "Ожидает")
+    ),
+    new Label(60, 290, 150, 0, "black", 55, "П11Р"),
+    new Switch(
+      200,
       290,
       200,
       0,
@@ -1379,6 +1448,20 @@ export default {
       55,
       new TopicBool("/", "Работает", "Ожидает")
     ),
+    new Label(490, 290, 150, 0, "black", 55, "Нагреватель"),
+    new Input(
+      820,
+      290,
+      95,
+      65,
+      "black",
+      "white",
+      55,
+      "100",
+      new TopicVal("", "100"),
+      new TopicVal("", "")
+    ),
+    new Label(930, 290, 150, 0, "black", 55, "%"),
     new Button(
       15,
       420,
@@ -1419,9 +1502,9 @@ export default {
   ]),
   P12P12R: new HMI([
     new Label(270, 40, 600, 100, "", 80, "ША П12П12Р"),
-    new Label(100, 200, 150, 0, "black", 55, "П12"),
+    new Label(60, 200, 150, 0, "black", 55, "П12"),
     new Switch(
-      400,
+      200,
       200,
       200,
       0,
@@ -1429,9 +1512,19 @@ export default {
       55,
       new TopicBool("/", "Работает", "Ожидает")
     ),
-    new Label(100, 290, 150, 0, "black", 55, "П12Р"),
+    new Label(490, 200, 150, 0, "black", 55, "Заслонка"),
     new Switch(
-      400,
+      740,
+      200,
+      200,
+      0,
+      "black",
+      55,
+      new TopicBool("/", "Работает", "Ожидает")
+    ),
+    new Label(60, 290, 150, 0, "black", 55, "П12Р"),
+    new Switch(
+      200,
       290,
       200,
       0,
@@ -1439,6 +1532,20 @@ export default {
       55,
       new TopicBool("/", "Работает", "Ожидает")
     ),
+    new Label(490, 290, 150, 0, "black", 55, "Нагреватель"),
+    new Input(
+      820,
+      290,
+      95,
+      65,
+      "black",
+      "white",
+      55,
+      "100",
+      new TopicVal("", "100"),
+      new TopicVal("", "")
+    ),
+    new Label(930, 290, 150, 0, "black", 55, "%"),
     new Button(
       15,
       420,
@@ -1479,9 +1586,9 @@ export default {
   ]),
   P13P13R: new HMI([
     new Label(270, 40, 600, 100, "", 80, "ША П13П13Р"),
-    new Label(100, 200, 150, 0, "black", 55, "П13"),
+    new Label(60, 200, 150, 0, "black", 55, "П13"),
     new Switch(
-      400,
+      200,
       200,
       200,
       0,
@@ -1489,9 +1596,19 @@ export default {
       55,
       new TopicBool("/", "Работает", "Ожидает")
     ),
-    new Label(100, 290, 150, 0, "black", 55, "П13Р"),
+    new Label(490, 200, 150, 0, "black", 55, "Заслонка"),
     new Switch(
-      400,
+      740,
+      200,
+      200,
+      0,
+      "black",
+      55,
+      new TopicBool("/", "Работает", "Ожидает")
+    ),
+    new Label(60, 290, 150, 0, "black", 55, "П13Р"),
+    new Switch(
+      200,
       290,
       200,
       0,
@@ -1499,6 +1616,20 @@ export default {
       55,
       new TopicBool("/", "Работает", "Ожидает")
     ),
+    new Label(490, 290, 150, 0, "black", 55, "Нагреватель"),
+    new Input(
+      820,
+      290,
+      95,
+      65,
+      "black",
+      "white",
+      55,
+      "100",
+      new TopicVal("", "100"),
+      new TopicVal("", "")
+    ),
+    new Label(930, 290, 150, 0, "black", 55, "%"),
     new Button(
       15,
       420,
@@ -1541,7 +1672,17 @@ export default {
     new Label(370, 40, 600, 100, "", 80, "ША ПД1"),
     new Label(100, 200, 150, 0, "black", 55, "ПД1"),
     new Switch(
-      400,
+      220,
+      200,
+      200,
+      0,
+      "black",
+      55,
+      new TopicBool("/", "Работает", "Ожидает")
+    ),
+    new Label(550, 200, 150, 0, "black", 55, "ВД1"),
+    new Switch(
+      670,
       200,
       200,
       0,
@@ -1591,7 +1732,17 @@ export default {
     new Label(370, 40, 600, 100, "", 80, "ША ПД2"),
     new Label(100, 200, 150, 0, "black", 55, "ПД2"),
     new Switch(
-      400,
+      220,
+      200,
+      200,
+      0,
+      "black",
+      55,
+      new TopicBool("/", "Работает", "Ожидает")
+    ),
+    new Label(550, 200, 150, 0, "black", 55, "ВД2"),
+    new Switch(
+      670,
       200,
       200,
       0,

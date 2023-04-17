@@ -2,7 +2,6 @@ import type TopicVal from "../mqtt/TopicVal";
 import Element from "./Element";
 
 export default class Input extends Element {
-  public readonly label: string;
   public value: string;
 
   public readonly get: TopicVal;
@@ -10,6 +9,7 @@ export default class Input extends Element {
 
   public readonly textColor: string;
   public readonly bgColor: string;
+  public readonly fontsize: number;
   constructor(
     x: number,
     y: number,
@@ -17,17 +17,16 @@ export default class Input extends Element {
     height: number,
     textColor: string,
     bgColor: string,
-    label: string,
+    fontsize: number,
     value: string,
     get: TopicVal,
     set: TopicVal
   ) {
     super(x, y, width, height);
-    this.label = label;
     this.value = value;
     this.get = get;
     this.set = set;
-
+    this.fontsize = fontsize;
     this.textColor = textColor;
     this.bgColor = bgColor;
   }

@@ -4,16 +4,22 @@
 
   export let model: Input;
 
+  let value: string = "---";
+
   MQTT.subscribe(model.get.topic, (topic, val) => {
+    // Отсекаем все левые топики
     if (topic != model.get.topic) return;
+
+    value = val;
   });
 </script>
 
-<input autocomplete="off" value={model.get.val} />
+<input autocomplete="off" {value} style="font-size: {model.fontsize}px;" />
 
 <style>
   input {
-    width: 50%;
+    height: 100%;
+    width: 100%;
     padding: 5px;
     border-radius: 5px;
   }
