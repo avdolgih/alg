@@ -26,11 +26,6 @@ export default class Input extends Element {
     this.click = click;
   }
 
-  //   Установка значения
-  public setValue(val: string) {
-    this.value = val;
-  }
-
   public static parseJson(e: Input): Input {
     const x: number = Number(e.x);
     const y: number = Number(e.y);

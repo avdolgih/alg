@@ -3,10 +3,10 @@
     export let model: Label
 </script>
 
-<p style="font-size: {model.fontsize}px; height: 100%;">{model.value}</p>
+<span style="font-size: {model.fontsize}px; height: 100%;">{model.value}</span>
 
 <style>
-    p {
+    span {
         font-family: Roboto, Geneva, Tahoma, sans-serif;
         width: 100%;
     }

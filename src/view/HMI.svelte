@@ -3,9 +3,6 @@
     import Elements from "./Elements.svelte";
 
     export let hmi: HMI
-
-    
-
 </script>
 
 {#each hmi.elements as element}

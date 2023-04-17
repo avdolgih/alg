@@ -4,7 +4,7 @@
 
 </script>
 
-<form >
+<form>
     <label for={model.state?.topic}>{model.label}:</label>
     <input 
     id={model.state?.topic}

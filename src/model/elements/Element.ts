@@ -3,7 +3,6 @@ export default abstract class Element {
   public y: number;
   public width: number;
   public height: number;
-  public color: string;
 
   constructor(
     x: number,

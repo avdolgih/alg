@@ -1,12 +1,17 @@
 <script lang="ts">
     import type Button from "../model/elements/Button";
     import { mqttClient } from "../store";
+    import MQTT from '../mqtt/MQTTClient'
 
     export let model: Button;
 
     function onClick(e: Event) {
         e.preventDefault();
-        $mqttClient.send(model.click?.topic, model.click?.val)
+
+        mqt
+
+        MQTT.
+        mqttClient.send(model.click?.topic, model.click?.val)
     }
 </script>
 

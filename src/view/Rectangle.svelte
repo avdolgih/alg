@@ -1,17 +1,15 @@
 <script lang="ts">
     import type Rectangle from "../model/elements/Rectangle";
-    export let model: Rectangle
-    console.log(model);
-    
+    export let model: Rectangle;
 </script>
 
-<div class="card" style="height: 100%;"></div>
+<div style="height: 100%;"></div>
 
 <style>
-    .card {
+    div {
         border-radius: 10px;
-        border: solid 1px rgba(128, 128, 128, 0.4);
-        box-shadow:  0px 0px 10px rgba(128, 128, 128, 0.03);
+        border: solid 1px #80808066;
+        box-shadow:  0px 0px 10px #80808008;
         z-index: -1
     }    
 </style>

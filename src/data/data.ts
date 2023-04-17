@@ -1,6 +1,5 @@
 import HMI from "../model/HMI";
 import Button from "../model/elements/Button";
-import Input from "../model/elements/Input";
 import Label from "../model/elements/Label";
 import Rectangle from "../model/elements/Rectangle";
 import Switch from "../model/elements/Switch";
@@ -11,13 +10,7 @@ export default {
   V5: new HMI([
     new Label(400, 0, 600, 100, "", 60, "ША В5"),
     new Label(100, 170, 150, 0, "black", 40, "Вентилятор"),
-    new Switch(
-      400,
-      170,
-      200,
-      0,
-      "black",
-      40,
+    new Switch(400, 170, 200, 0, "black", 40,
       new TopicBool("/mode/get", "START", [
         { value: "START", text: "Работает" },
         { value: "STOP", text: "Ожидает" },
@@ -25,13 +18,7 @@ export default {
         { value: "ERROR", text: "Ошибка" },
       ])
     ),
-    new Button(
-      15,
-      380,
-      280,
-      250,
-      "#14FF00",
-      "ПУСК",
+    new Button(15, 380, 280, 250, "#14FF00", "ПУСК",
       new TopicVal("/mode/get", ""),
       new TopicVal("/mode/set", "START")
     ),
