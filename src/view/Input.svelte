@@ -4,10 +4,12 @@
 
   export let model: Input;
 
-  MQTT.subscribe(model.state.topic, () => {});
+  MQTT.subscribe(model.get.topic, (topic, val) => {
+    if (topic != model.get.topic) return;
+  });
 </script>
 
-<input autocomplete="off" value={model.state?.val} />
+<input autocomplete="off" value={model.get.val} />
 
 <style>
   input {

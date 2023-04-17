@@ -5,15 +5,18 @@
 
   let bgColor: string;
 
-  MQTT.subscribe(model.state.topic, (val) => {
-    const activeVal = model.state.val;
+  MQTT.subscribe(model.get.topic, (topic, val) => {
+    // Отсекаем все левые топики
+    if (topic != model.get.topic) return;
+
+    const activeVal = model.get.val;
     if (val === activeVal) bgColor = model.bgColor;
     else bgColor = "";
   });
 
   function onClick() {
-    const topic = model.click.topic;
-    const val = model.click.val;
+    const topic = model.set.topic;
+    const val = model.set.val;
     MQTT.send(topic, val);
   }
 </script>

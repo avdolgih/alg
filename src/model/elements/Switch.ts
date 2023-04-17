@@ -2,9 +2,8 @@ import type TopicBool from "../mqtt/TopicBool";
 import Element from "./Element";
 
 export default class Switch extends Element {
-
   public readonly fontsize: number;
-  public readonly state: TopicBool;
+  public readonly get: TopicBool;
   public readonly textColor: string;
 
   constructor(
@@ -14,11 +13,11 @@ export default class Switch extends Element {
     height: number,
     textColor: string,
     fontsize: number,
-    state: TopicBool
+    get: TopicBool
   ) {
     super(x, y, width, height);
     this.fontsize = fontsize;
-    this.state = state;
+    this.get = get;
     this.textColor = textColor;
   }
 

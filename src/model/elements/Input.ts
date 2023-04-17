@@ -19,14 +19,14 @@ export default class Input extends Element {
     bgColor: string,
     label: string,
     value: string,
-    state: TopicVal,
-    click: TopicVal
+    get: TopicVal,
+    set: TopicVal
   ) {
     super(x, y, width, height);
     this.label = label;
     this.value = value;
-    this.state = state;
-    this.click = click;
+    this.get = get;
+    this.set = set;
 
     this.textColor = textColor;
     this.bgColor = bgColor;

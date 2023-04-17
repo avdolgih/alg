@@ -3,8 +3,8 @@ import Element from "./Element";
 
 export default class Button extends Element {
   public readonly text: string;
-  public readonly state: TopicVal;
-  public readonly click: TopicVal;
+  public readonly get: TopicVal;
+  public readonly set: TopicVal;
 
   public readonly fontsize: number;
   public readonly bgColor: string;
@@ -25,8 +25,8 @@ export default class Button extends Element {
     super(x, y, width, height);
 
     this.text = text;
-    this.state = state;
-    this.click = click;
+    this.get = get;
+    this.set = set;
     this.bgColor = bgColor;
     this.fontsize = fontsize;
     this.textColor = textColor;

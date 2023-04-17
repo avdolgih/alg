@@ -2,11 +2,18 @@
   import type Switch from "../model/elements/Switch";
   import MQTT from "../mqtt/MQTT";
   export let model: Switch;
-  MQTT.subscribe(model.state.topic, (topic, view) => {});
+
+  let text: string = "---";
+
+  MQTT.subscribe(model.get.topic, (topic, val) => {
+    // Отсекаем все левые топики
+    if (topic != model.get.topic) return;
+    val === "true" ? (text = model.get.textTrue) : model.get.textFalse;
+  });
 </script>
 
 <span style="font-size: {model.fontsize}px; color: {model.textColor};">
-  {model.state.text}
+  {text && text}
 </span>
 
 <style>
