@@ -2,6 +2,7 @@ import type TopicBool from "../mqtt/TopicBool";
 import Element from "./Element";
 
 export default class Switch extends Element {
+
   public readonly fontsize: number;
   public readonly state: TopicBool;
   public readonly textColor: string;
@@ -31,8 +32,4 @@ export default class Switch extends Element {
   //   const state: TopicBool = TopicBool.parseJson(e.state);
   //   return new Switch(x, y, width, height, color, fontsize, state);
   // }
-
-  public updateState(value: string) {
-    this.state.updateState(value);
-  }
 }

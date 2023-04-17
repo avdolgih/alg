@@ -5,8 +5,8 @@ export default class Input extends Element {
   public readonly label: string;
   public value: string;
 
-  public readonly state: TopicVal;
-  public readonly click: TopicVal;
+  public readonly get: TopicVal;
+  public readonly set: TopicVal;
 
   public readonly textColor: string;
   public readonly bgColor: string;

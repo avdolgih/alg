@@ -1,34 +1,16 @@
 export default class TopicBool {
   public readonly topic: string;
-  public value: string;
-  public statusList: TStatus[];
-  public text?: string;
+  public readonly textTrue: string;
+  public readonly textFalse: string;
 
-  constructor(topic: string, value: string, statusList: TStatus[]) {
+  constructor(topic: string, textTrue: string, textFalse: string) {
     this.topic = topic;
-    this.value = value;
-    this.statusList = statusList;
-    this.text = "---";
+    this.textTrue = textTrue;
+    this.textFalse = textFalse;
   }
 
   // public static parseJson(e: TopicBool): TopicBool {
   //   const topic: string = e.topic;
-  //   const textFalse: string = e.textFalse;
-  //   const textTrue: string = e.textTrue;
-  //   return new TopicBool(topic, textFalse, textTrue);
+  //   return new TopicBool(topic, textTrue, textFalse);
   // }
-
-  public updateState(value: string) {
-    console.log(value);
-
-    this.value = value;
-    this.text = this.statusList.find((status) => {
-      return status.value === this.value;
-    })?.text;
-  }
 }
-
-type TStatus = {
-  value: string;
-  text: string;
-};

@@ -20,8 +20,6 @@ export default {
       new TopicBool("/mode/get", "START", [
         { value: "START", text: "Работает" },
         { value: "STOP", text: "Ожидает" },
-        { value: "AUTO", text: "Авто" },
-        { value: "ERROR", text: "Ошибка" },
       ])
     ),
     new Button(
@@ -33,7 +31,7 @@ export default {
       "black",
       "ПУСК",
       65,
-      new TopicVal("/mode/get", ""),
+      new TopicVal("/mode/get", "START"),
       new TopicVal("/mode/set", "START")
     ),
     new Button(
@@ -45,7 +43,7 @@ export default {
       "black",
       "СТОП",
       65,
-      new TopicVal("/mode/get", ""),
+      new TopicVal("/mode/get", "STOP"),
       new TopicVal("/mode/set", "STOP")
     ),
     new Button(
@@ -57,7 +55,7 @@ export default {
       "black",
       "АВТО",
       65,
-      new TopicVal("/mode/get", ""),
+      new TopicVal("/mode/get", "AUTO"),
       new TopicVal("/mode/set", "AUTO")
     ),
     new Rectangle(15, 160, 994, 150, "#fff"),

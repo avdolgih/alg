@@ -1,20 +1,26 @@
 <script lang="ts">
   import type Button from "../model/elements/Button";
+  import MQTT from "../mqtt/MQTT";
   export let model: Button;
 
-  import MQTT from "../mqtt/MQTTClient";
-  MQTT.subscribe(model.state.topic, () => {});
-  let colorSwitch =
-    model.state?.val === model.click?.val ? model.bgColor : "grey";
+  let bgColor: string;
 
-  function onClick(e: Event) {
-    e.preventDefault();
+  MQTT.subscribe(model.state.topic, (val) => {
+    const activeVal = model.state.val;
+    if (val === activeVal) bgColor = model.bgColor;
+    else bgColor = "";
+  });
+
+  function onClick() {
+    const topic = model.click.topic;
+    const val = model.click.val;
+    MQTT.send(topic, val);
   }
 </script>
 
 <button
   on:click={onClick}
-  style="background-color: {colorSwitch};color: {model.textColor}; font-size:{model.fontsize}px;"
+  style="background-color: {bgColor};color: {model.textColor}; font-size:{model.fontsize}px;"
 >
   {model.text}
 </button>

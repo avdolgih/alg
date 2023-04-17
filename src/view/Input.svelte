@@ -1,13 +1,13 @@
 <script lang="ts">
   import type Input from "../model/elements/Input";
-  import MQTT from "../mqtt/MQTTClient";
+  import MQTT from "../mqtt/MQTT";
 
   export let model: Input;
 
   MQTT.subscribe(model.state.topic, () => {});
 </script>
 
-<input id={model.state?.topic} autocomplete="off" value={model.state?.val} />
+<input autocomplete="off" value={model.state?.val} />
 
 <style>
   input {

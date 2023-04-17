@@ -1,6 +1,6 @@
 <script lang="ts">
   import type Switch from "../model/elements/Switch";
-  import MQTT from "../mqtt/MQTTClient";
+  import MQTT from "../mqtt/MQTT";
   export let model: Switch;
   MQTT.subscribe(model.state.topic, (topic, view) => {});
 </script>

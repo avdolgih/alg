@@ -19,8 +19,8 @@ export default class Button extends Element {
     textColor: string,
     text: string,
     fontsize: number,
-    state: TopicVal,
-    click: TopicVal
+    get: TopicVal,
+    set: TopicVal
   ) {
     super(x, y, width, height);
 
@@ -44,8 +44,4 @@ export default class Button extends Element {
 
   //   return new Button(x, y, width, height, color, text, state, click);
   // }
-
-  public updateState(value: string): void {
-    this.state?.updateState(value);
-  }
 }
