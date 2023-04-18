@@ -4,17 +4,11 @@
 
   // Выбор шкафа
   import { name } from "../settings";
-  import MQTT from "../mqtt/MQTT";
-
-  MQTT.subscribe("/mode/set", (val: string) => {
-    console.log(val);
-  });
 
   let arrayData: string[] = [];
   Object.keys(data).forEach((d) => {
     arrayData.push(d);
   });
-  console.log(arrayData);
 </script>
 
 <div style="display: flex; flex-direction:column; gap: 768px;">
@@ -29,5 +23,4 @@
 </div>
 
 <style>
-  
 </style>

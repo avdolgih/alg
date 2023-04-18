@@ -5,9 +5,7 @@
 
   let text: string = "---";
 
-  MQTT.subscribe(model.get.topic, (topic, val) => {
-    // Отсекаем все левые топики
-    if (topic != model.get.topic) return;
+  MQTT.subscribe(model.get.topic, (val) => {
     val === "true" ? (text = model.get.textTrue) : model.get.textFalse;
   });
 </script>

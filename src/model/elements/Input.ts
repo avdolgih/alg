@@ -10,6 +10,8 @@ export default class Input extends Element {
   public readonly textColor: string;
   public readonly bgColor: string;
   public readonly fontsize: number;
+
+  public readonly disabled: boolean;
   constructor(
     x: number,
     y: number,
@@ -19,6 +21,7 @@ export default class Input extends Element {
     bgColor: string,
     fontsize: number,
     value: string,
+    disabled: boolean,
     get: TopicVal,
     set: TopicVal
   ) {
@@ -29,6 +32,7 @@ export default class Input extends Element {
     this.fontsize = fontsize;
     this.textColor = textColor;
     this.bgColor = bgColor;
+    this.disabled = disabled;
   }
 
   // public static parseJson(e: Input): Input {
