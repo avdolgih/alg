@@ -13,7 +13,7 @@
 </script>
 
 <span style="font-size: {model.fontsize}px; color: {model.textColor};">
-  {text && text}
+  {text}
 </span>
 
 <style>

@@ -7,8 +7,7 @@
   let value: string = "---";
 
   MQTT.subscribe(model.get.topic, (topic, val) => {
-    // Отсекаем все левые топики
-    if (topic != model.get.topic) return;
+
 
     value = val;
   });

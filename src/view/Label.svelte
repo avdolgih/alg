@@ -3,8 +3,7 @@
   export let model: Label;
 </script>
 
-<span style="font-size: {model.fontsize}px; font-size=50px;">{model.value}</span
->
+<span style="font-size: {model.fontsize}px; font-size=50px;">{model.value}</span>
 
 <style>
   span {

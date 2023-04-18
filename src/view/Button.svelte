@@ -6,9 +6,6 @@
   let bgColor: string;
 
   MQTT.subscribe(model.get.topic, (topic, val) => {
-    // Отсекаем все левые топики
-    if (topic != model.get.topic) return;
-
     const activeVal = model.get.val;
     if (val === activeVal) bgColor = model.bgColor;
     else bgColor = "";

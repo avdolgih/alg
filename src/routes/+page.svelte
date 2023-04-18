@@ -17,7 +17,7 @@
   console.log(arrayData);
 </script>
 
-<div style="display: flex; flex-direction:column; height: 18600px; gap: 768px;">
+<div style="display: flex; flex-direction:column; gap: 768px;">
   {#each arrayData as name}
     <div style="display: flex; flex-direction:column">
       <div style="position:relative;">
@@ -27,3 +27,7 @@
     </div>
   {/each}
 </div>
+
+<style>
+  
+</style>
