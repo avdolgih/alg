@@ -6,7 +6,7 @@
   let text: string = "---";
 
   MQTT.subscribe(model.get.topic, (val) => {
-    val === "true" ? (text = model.get.textTrue) : model.get.textFalse;
+    val === "true" ? (text = model.get.textTrue) : (text = model.get.textFalse);
   });
 </script>
 
