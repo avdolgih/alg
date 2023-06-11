@@ -3,14 +3,16 @@ import ModbusRTU from "./ModbusRTU";
 
 const modbusRTU = new ModbusRTU();
 
-commands();
+console.log("Работает!");
 
-async function commands() {
-    await modbusRTU.connect();
-    while (true) {
-        console.log(await modbusRTU.readAI(2, 50, 8));
-    }
-};
+// commands();
+
+// async function commands() {
+//     await modbusRTU.connect();
+//     while (true) {
+//         console.log(await modbusRTU.readAI(2, 50, 8));
+//     }
+// };
 
 // modbusRTU.writeDO(2, 0, true).then((val) => {
 //     console.log("Then: " + val);

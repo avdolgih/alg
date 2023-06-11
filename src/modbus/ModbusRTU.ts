@@ -13,9 +13,8 @@ export default class ModbusRTU {
     }
 
     async readDI(addr: number, reg: number, count: number): Promise<boolean[]> {
-        return new Promise<boolean[]>((resolve, reject) => {
-
-        });
+        this.client.setID(addr);
+        return (await this.client.readCoils(reg, count)).data;
     }
 
     async readAI(addr: number, reg: number, count: number): Promise<number[]> {
