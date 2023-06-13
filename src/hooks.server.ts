@@ -1,19 +1,45 @@
-import ModbusRTU from "./modbus/ModbusRTU";
+import Aedes from "aedes";
+import http from "http";
+import ws from "websocket-stream";
+
+const httpServer = http.createServer();
+const websocket = ws.createServer({ server: httpServer }, new Aedes().handle);
+
+httpServer.listen(8888, () => {
+    console.log(8888);
+});
 
 
-startup();
-console.log("Работает!");
 
-async function startup() {
-    const modbusRTU = new ModbusRTU();
-    await modbusRTU.connect();
-    console.log("Запрос данных!");
-    setInterval(async ()=> {
-        console.log(await modbusRTU.readDI(2, 0, 8));
-        console.log(await modbusRTU.readAI(2, 50, 8));
-    }, 1000);
 
-}
+// const aedes = require('aedes')()
+// const httpServer = require('http').createServer()
+// const ws = require('websocket-stream')
+// const port = 8888
+
+// ws.createServer({ server: httpServer }, aedes.handle)
+
+// httpServer.listen(port, function () {
+//   console.log('websocket server listening on port ', port)
+// })
+
+
+
+
+// import ModbusRTU from "./modbus/ModbusRTU";
+
+// startup();
+
+// async function startup() {
+//     const modbusRTU = new ModbusRTU();
+//     await modbusRTU.connect();
+//     console.log("Запрос данных!");
+//     setInterval(async ()=> {
+//         console.log(await modbusRTU.readDI(2, 0, 8));
+//         console.log(await modbusRTU.readAI(2, 50, 8));
+//     }, 1000);
+
+// }
 
 // commands();
 
