@@ -1,4 +1,4 @@
-import IOut from "../IO/IOut";
+import type IOut from "../IO/IOut";
 import Out from "../IO/Out";
 
 export default class TON {

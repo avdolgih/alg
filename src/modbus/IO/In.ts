@@ -1,4 +1,4 @@
-import IOut from "./IOut";
+import type IOut from "./IOut";
 import Out from "./Out";
 
 export default class In<T> {
@@ -10,23 +10,22 @@ export default class In<T> {
         this.changed = changed;
     }
 
-    async set(val: T | IOut<T>) {
-        if (val == this.val)
+    bind(val: IOut<T>) {
+        if (val === this.val)
             return;
 
-        if (this.val instanceof Out<T>) 
-            this.val.unsubscribe(this.changed);
-
         this.val = val;
+        val.subscribe(this.changed);
+    }
 
-        if (val instanceof Out<T>)
-            val.subscribe(this.changed);
-        else 
-            await this.changed(<T>val);
+    set(val: T) {
+        if (val === this.val)
+            return;
+        this.val = val;
     }
 
     get(): T {
-        if (this.val instanceof Out<T>) 
+        if (this.val instanceof Out<T>)
             return this.val.get();
         return <T>this.val;
     }

@@ -1,4 +1,5 @@
-import IOut from "./IOut.js";
+import type IOut from "./IOut";
+
 
 export default class Out<T> implements IOut<T> {
 
@@ -14,12 +15,14 @@ export default class Out<T> implements IOut<T> {
     }
 
     set(val: T) {
-        if (val == this.val)
+        if (val === this.val)
             return;
-        console.log("Значение изменилось c " + this.val + " на " + val);
+
+        console.log("Значение изменилось с " + this.val + " на " + val);
         this.val = val;
-        this.subscribers.forEach(async (callback) => {
-            await callback(this.val);
+
+        this.subscribers.forEach((callback) => {
+            callback(this.val);
         });
     }
 
