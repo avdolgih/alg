@@ -1,5 +1,5 @@
-import In from "../IO/In";
-import Out from "../IO/Out";
+import In from "../../lib/IO/In";
+import Out from "../../lib/IO/Out";
 import type ModbusRTU from "../ModbusRTU";
 
 export default class CWT_MB308P {
@@ -77,8 +77,6 @@ export default class CWT_MB308P {
         // this.ai14.set(ai[13]);
         // this.ai15.set(ai[14]);
         // this.ai16.set(ai[15]);
-
-
 
         await this.client.writeDOs(this.addr, 0, [
             this.do1.get(),

@@ -1,10 +1,9 @@
-import Queue from "./Queue";
-import JSModbusRTU from "jsmodbus";
 import ModbusSerial from "modbus-serial";
+import type { WriteMultipleResult } from "modbus-serial/ModbusRTU";
 
 export default class ModbusRTU {
 
-    private client = new ModbusSerial("COM4");
+    private client = new ModbusSerial();
 
     async connect() {
         return this.client.connectRTUBuffered("COM4", { baudRate: 115200 });
@@ -25,7 +24,7 @@ export default class ModbusRTU {
         return ((await this.client.writeCoil(reg, val)).state)
     }
 
-    async writeDOs(addr: number, reg: number, val: boolean[]) {
+    async writeDOs(addr: number, reg: number, val: boolean[]) : Promise<WriteMultipleResult> {
         this.client.setID(addr);
         return (await this.client.writeCoils(reg, val));
     }
