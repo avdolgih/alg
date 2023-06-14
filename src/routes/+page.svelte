@@ -1,8 +1,8 @@
 <script>
-    import ShaGsm from "../hmi/SHA_GSM.svelte";
-    import ShaRsm from "../hmi/SHA_RSM.svelte";
-    import ShaTu from "../hmi/SHA_TU.svelte";
-    import ShaYo from "../hmi/SHA_YO.svelte";
+    import ShaGsm from "../view/SHA_GSM.svelte";
+    import ShaRsm from "../view/SHA_RSM.svelte";
+    import ShaTu from "../view/SHA_TU.svelte";
+    import ShaYo from "../view/SHA_YO.svelte";
 </script>
 
 <div class="root">
