@@ -16,3 +16,8 @@ const module1 = new CWT_MB308P(modbusRTU, 2);
 const filter = new Filter();
 filter.dry.bind(module1.di1);
 module1.do1.bind(filter.alarm);
+module1.do2.bind(filter.alarm);
+module1.do3.bind(filter.alarm);
+module1.do4.bind(filter.alarm);
+module1.do5.bind(filter.alarm);
+module1.do6.bind(filter.alarm);

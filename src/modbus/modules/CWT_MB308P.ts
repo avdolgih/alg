@@ -60,7 +60,7 @@ export default class CWT_MB308P {
         this.di7.set(di[6]);
         this.di8.set(di[7]);
 
-        const ai = await this.client.readAI(this.addr, 50, 8);
+        const ai = await this.client.readAI(this.addr, 50, 16);
         this.ai1.set(ai[0]);
         this.ai2.set(ai[1]);
         this.ai3.set(ai[2]);
@@ -69,14 +69,14 @@ export default class CWT_MB308P {
         this.ai6.set(ai[5]);
         this.ai7.set(ai[6]);
         this.ai8.set(ai[7]);
-        // this.ai9.set(ai[8]);
-        // this.ai10.set(ai[9]);
-        // this.ai11.set(ai[10]);
-        // this.ai12.set(ai[11]);
-        // this.ai13.set(ai[12]);
-        // this.ai14.set(ai[13]);
-        // this.ai15.set(ai[14]);
-        // this.ai16.set(ai[15]);
+        this.ai9.set(ai[8]);
+        this.ai10.set(ai[9]);
+        this.ai11.set(ai[10]);
+        this.ai12.set(ai[11]);
+        this.ai13.set(ai[12]);
+        this.ai14.set(ai[13]);
+        this.ai15.set(ai[14]);
+        this.ai16.set(ai[15]);
 
         await this.client.writeDOs(this.addr, 0, [
             this.do1.get(),

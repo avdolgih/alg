@@ -1,8 +1,8 @@
 <script>
-    import SHA_GSM from "../view/SHA_GSM.svelte";
-    import SHA_RSM from "../view/SHA_RSM.svelte";
-    import SHA_YO from "../view/SHA_YO.svelte";
-    import SHA_TU from "../view/SHA_TU.svelte";
+    import SHA_GSM from "../view/systems/SHA_GSM.svelte";
+    import SHA_RSM from "../view/systems/SHA_RSM.svelte";
+    import SHA_YO from "../view/systems/SHA_YO.svelte";
+    import SHA_TU from "../view/systems/SHA_TU.svelte";
 </script>
 
 <div class="system">
