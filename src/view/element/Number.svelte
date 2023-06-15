@@ -3,28 +3,27 @@
 
     export let x: number = 0;
     export let y: number = 0;
-    export let w: number = 200;
+    export let w: number = 80;
     export let h: number = 30;
-    export let text: string = "";
     export let size: number = 40;
+    export let val: number = NaN;
     export let align: Align = Align.center;
-    export let bold: boolean = false;
 </script>
 
 <div
-    style="left:{x}px;top:{y}px;width:{w}px;height:{h}px;font-size:{size}px;
-    {bold ? 'font-weight:bold' : ''};justify-content:{align}"
+    style="left:{x}px;top:{y}px;width:{w}px;height:{h}px;justify-content:{align};font-size:{size}px"
 >
-    {text}
+    {val}
 </div>
 
 <style>
     div {
         display: flex;
         align-items: center;
+        font-weight: bold;
         position: absolute;
-        overflow: hidden;
         box-sizing: border-box;
-        border: 1px dashed #ccc;
+        border: 1px solid #000;
+        border-radius: 10px;
     }
 </style>
