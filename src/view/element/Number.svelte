@@ -1,23 +1,21 @@
 <script lang="ts">
-    import { onMount } from "svelte/types/runtime/internal/lifecycle";
     import { Align } from "../util/Align";
-    import MQTT from "../../mqtt/MQTT";
-
+   
     export let x: number = 0;
     export let y: number = 0;
     export let w: number = 80;
     export let h: number = 30;
-    export let topic: string;
+    export let topic: string = "";
     export let size: number = 40;
     export let align: Align = Align.center;
 
-    let val: number = NaN;
+    let val: number = 0;
 
-    onMount(() => {
-        MQTT.subscribe(topic, (v)=> {
-            val = parseFloat(v);
-        });
-	});
+    // onMount(() => {
+    //     MQTT.subscribe(topic, (v)=> {
+    //         val = parseFloat(v);
+    //     });
+	// });
 </script>
 
 <div

@@ -5,15 +5,18 @@
     import { Align } from "../util/Align";
     import Button from "../element/Button.svelte";
     import Image from "../element/Image.svelte";
-    import { ChangeValue, Type } from "../util/ChangeValue";
 
     export let x: number;
     export let y: number;
     export let text: string;
-    export let topic: string;
+    export let topic: string = "";
 
-    const plus = () => {};
-    const minus = () => {};
+    const plus = () => {
+        console.log("plus");
+    };
+    const minus = () => {
+        console.log("minus");
+    };
 </script>
 
 <Group {x} {y}>
@@ -29,6 +32,6 @@
     />
     <Number x={240} y={0} w={100} h={80} size={50} {topic} />
     <Text x={340} y={0} w={40} h={80} align={Align.left} text="%" />
-    <Button x={390} y={0} w={80} h={80} text="−" action={plus} />
-    <Button x={480} y={0} w={80} h={80} text="+" action={minus} />
+    <Button x={390} y={0} w={80} h={80} text="−" action={minus} />
+    <Button x={480} y={0} w={80} h={80} text="+" action={plus} />
 </Group>

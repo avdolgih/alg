@@ -1,6 +1,5 @@
 <script lang="ts">
     import { Align } from "../util/Align";
-    import type IAction from "../util/IAction";
 
     export let text: string;
     export let x: number = 0;
