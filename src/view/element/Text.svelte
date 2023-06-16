@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Align } from "../util/Align";
-
+    
     export let x: number = 0;
     export let y: number = 0;
     export let w: number = 200;
@@ -24,7 +24,5 @@
         align-items: center;
         position: absolute;
         overflow: hidden;
-        box-sizing: border-box;
-        border: 1px dashed #ccc;
     }
 </style>

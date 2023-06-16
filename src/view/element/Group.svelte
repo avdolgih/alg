@@ -10,6 +10,5 @@
 <style>
     div {
         position: absolute;
-        outline: 1px dashed #888;
     }
 </style>

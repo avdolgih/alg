@@ -1,4 +1,4 @@
-import In from "../IO/In";
+import In from "../../lib/In";
 import Out from "../IO/Out";
 
 

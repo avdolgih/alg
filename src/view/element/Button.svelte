@@ -1,5 +1,6 @@
 <script lang="ts">
     import { Align } from "../util/Align";
+    import type IAction from "../util/IAction";
 
     export let text: string;
     export let x: number = 0;
@@ -8,12 +9,14 @@
     export let h: number = 30;
     export let align: Align = Align.center;
     export let size: number = 40;
+    export let action: () => void;
 </script>
 
 <button
+    on:click={action}
     style="left:{x}px;top:{y}px;width:{w}px;height:{h}px;justify-content:{align};font-size:{size}px"
-    >{text}</button
->
+    >{text}
+</button>
 
 <style>
     button {

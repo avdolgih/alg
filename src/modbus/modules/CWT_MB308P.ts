@@ -1,4 +1,4 @@
-import In from "../../lib/IO/In";
+import In from "../../lib/In";
 import Out from "../../lib/IO/Out";
 import type ModbusRTU from "../ModbusRTU";
 

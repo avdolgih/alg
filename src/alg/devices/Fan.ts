@@ -1,5 +1,5 @@
 import Out from "../IO/Out";
-import In from "../IO/In";
+import In from "../../lib/In";
 
 export default class Fan {
 

@@ -25,6 +25,7 @@
 		"http": "^0.0.1-security",
 		"jsmodbus": "^4.0.6",
 		"modbus-serial": "^8.0.11",
+		"mqtt": "^4.3.7",
 		"serialport": "^11.0.0",
 		"websocket-stream": "^5.5.2"
 	}
