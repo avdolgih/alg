@@ -5,17 +5,36 @@
     import { Align } from "../util/Align";
     import Button from "../element/Button.svelte";
     import Image from "../element/Image.svelte";
+    import { get, writable } from "svelte/store";
+    import MQTT from "../../mqtt/MQTT";
+    import { onMount } from "svelte";
 
     export let x: number;
     export let y: number;
     export let text: string;
-    export let topic: string = "";
+    export let topic: string;
+    export let step: number;
+    export let min: number;
+    export let max: number;
+
+    let val = 0;
+
+    onMount(() => {
+        MQTT.subscribe(topic, (v) => {
+            val = parseFloat(v);
+        });
+    });
 
     const plus = () => {
-        console.log("plus");
+        const v = val + step;
+        if (v > max) return;
+        MQTT.publish(topic, v.toString());
     };
+
     const minus = () => {
-        console.log("minus");
+        const v = val - step;
+        if (v < min) return;
+        MQTT.publish(topic, v.toString());
     };
 </script>
 

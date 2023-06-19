@@ -1,27 +1,31 @@
 <script lang="ts">
+    import { onMount } from "svelte";
     import { Align } from "../util/Align";
-   
+    import MQTT from "../../mqtt/MQTT";
+    import { writable, type Writable } from "svelte/store";
+
     export let x: number = 0;
     export let y: number = 0;
     export let w: number = 80;
     export let h: number = 30;
-    export let topic: string = "";
+    export let topic: string;
     export let size: number = 40;
     export let align: Align = Align.center;
+    export let digit: number = 0;
 
-    let val: number = 0;
+    const val = writable(0);
 
-    // onMount(() => {
-    //     MQTT.subscribe(topic, (v)=> {
-    //         val = parseFloat(v);
-    //     });
-	// });
+    onMount(() => {
+        MQTT.subscribe(topic, (v) => {
+            val.set(parseFloat(v));
+        });
+    });
 </script>
 
 <div
     style="left:{x}px;top:{y}px;width:{w}px;height:{h}px;justify-content:{align};font-size:{size}px"
 >
-    {val}
+    {$val.toFixed(digit)}
 </div>
 
 <style>
