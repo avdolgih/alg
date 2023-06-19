@@ -1,8 +1,8 @@
 <script lang="ts">
     import MQTT from "../mqtt/MQTT";
 
-    let topic: string = "/nku/sensor1";
-    let value: string = "30";
+    let topic: string = "/nku/threshold1/alarm";
+    let value: string = "true";
 
     function send() {
         MQTT.publish(topic, value);

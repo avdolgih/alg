@@ -47,7 +47,7 @@
         h={60}
         on="circle-red.svg"
         off="circle-gray.svg"
-        {topic}
+        topic={topic + "/alarm"}
     />
     <Number x={240} y={0} w={100} h={80} size={50} {topic} />
     <Text x={340} y={0} w={40} h={80} align={Align.left} text="%" />

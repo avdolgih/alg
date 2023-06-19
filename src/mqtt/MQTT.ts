@@ -16,9 +16,7 @@ class MQTT {
         this.client = connect(this.url);
         this.client.on("message", (topic, payload) => {
             const onMessage = this.subscribers.get(topic);
-            if (!onMessage)
-                return;
-
+            if (!onMessage) return;
             const value = payload.toString();
             onMessage.forEach(f => f(value));
         });
