@@ -3,36 +3,20 @@
     import SHA_RSM from "../view/systems/SHA_RSM.svelte";
     import SHA_YO from "../view/systems/SHA_YO.svelte";
     import SHA_TU from "../view/systems/SHA_TU.svelte";
-    import Button from "../view/element/Button.svelte";
-    import MQTT from "../mqtt/MQTT";
-    import Test from "../view/Test.svelte";
-
-
-    MQTT.subscribe("/nku/", (val)=> console.log(val));
-    const action = () => {
-        MQTT.publish("/nku/sensor1", "34.21");
-    };
+    import { system } from "../config.json";
 </script>
 
-<Test />
-
-<Button x={1030} y={0} w={300} h={80} text="Hello" {action} />
-
-<div class="system">
-    <SHA_GSM />
-</div>
-
-<div class="system">
-    <SHA_RSM />
-</div>
-
-<div class="system">
-    <SHA_YO />
-</div>
-
-<div class="system">
-    <SHA_TU />
-</div>
+<!-- <div class="system"> -->
+    {#if system == "SHA_GSM"}
+        <SHA_GSM />
+    {:else if system == "SHA_RSM"}
+        <SHA_RSM />
+    {:else if system == "SHA_YO"}
+        <SHA_YO />
+    {:else if system == "SHA_TU"}
+        <SHA_TU />
+    {/if}
+<!-- </div> -->
 
 <style>
     .system {

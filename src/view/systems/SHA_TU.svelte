@@ -23,8 +23,24 @@
         <Output x={0} y={200} text="Датчик 3" topic="/nku/propane/sensor3" />
     </Group>
     <Group x={440} y={200}>
-        <Input x={0} y={0} text="Порог 1" topic="/nku/propane/threshold1" />
-        <Input x={0} y={100} text="Порог 2" topic="/nku/propane/threshold2" />
+        <Input
+            x={0}
+            y={0}
+            text="Порог 1"
+            step={1}
+            min={0}
+            max={100}
+            topic="/nku/propane/threshold1"
+        />
+        <Input
+            x={0}
+            y={100}
+            text="Порог 2"
+            step={1}
+            min={0}
+            max={100}
+            topic="/nku/propane/threshold2"
+        />
     </Group>
 </Group>
 
@@ -44,8 +60,24 @@
         <Output x={0} y={200} text="Датчик 3" topic="/nku/methanol/sensor3" />
     </Group>
     <Group x={440} y={200}>
-        <Input x={0} y={0} text="Порог 1" topic="/nku/methanol/threshold1" />
-        <Input x={0} y={100} text="Порог 2" topic="/nku/methanol/threshold2" />
+        <Input
+            x={0}
+            y={0}
+            text="Порог 1"
+            step={1}
+            min={0}
+            max={100}
+            topic="/nku/methanol/threshold1"
+        />
+        <Input
+            x={0}
+            y={100}
+            text="Порог 2"
+            step={1}
+            min={0}
+            max={100}
+            topic="/nku/methanol/threshold2"
+        />
     </Group>
 </Group>
 
@@ -66,8 +98,24 @@
         <Output x={0} y={300} text="Датчик 4" topic="/nku/ammonia/sensor4" />
     </Group>
     <Group x={440} y={300}>
-        <Input x={0} y={0} text="Порог 1" topic="/nku/ammonia/threshold1" />
-        <Input x={0} y={100} text="Порог 2" topic="/nku/ammonia/threshold2" />
+        <Input
+            x={0}
+            y={0}
+            text="Порог 1"
+            step={1}
+            min={0}
+            max={100}
+            topic="/nku/ammonia/threshold1"
+        />
+        <Input
+            x={0}
+            y={100}
+            text="Порог 2"
+            step={1}
+            min={0}
+            max={100}
+            topic="/nku/ammonia/threshold2"
+        />
     </Group>
 </Group>
 
@@ -87,8 +135,24 @@
         <Output x={0} y={200} text="Датчик 3" topic="/nku/oxygen/sensor3" />
     </Group>
     <Group x={440} y={200}>
-        <Input x={0} y={0} text="Порог 1" topic="/nku/oxygen/threshold1" />
-        <Input x={0} y={100} text="Порог 2" topic="/nku/oxygen/threshold2" />
+        <Input
+            x={0}
+            y={0}
+            text="Порог 1"
+            step={1}
+            min={0}
+            max={100}
+            topic="/nku/oxygen/threshold1"
+        />
+        <Input
+            x={0}
+            y={100}
+            text="Порог 2"
+            step={1}
+            min={0}
+            max={100}
+            topic="/nku/oxygen/threshold2"
+        />
     </Group>
 </Group>
 
@@ -106,7 +170,23 @@
         <Output x={0} y={0} text="Датчик 1" topic="/nku/hydrogen/sensor1" />
     </Group>
     <Group x={440} y={200}>
-        <Input x={0} y={0} text="Порог 1" topic="/nku/hydrogen/threshold1" />
-        <Input x={0} y={100} text="Порог 2" topic="/nku/hydrogen/threshold2" />
+        <Input
+            x={0}
+            y={0}
+            text="Порог 1"
+            step={1}
+            min={0}
+            max={100}
+            topic="/nku/hydrogen/threshold1"
+        />
+        <Input
+            x={0}
+            y={100}
+            text="Порог 2"
+            step={1}
+            min={0}
+            max={100}
+            topic="/nku/hydrogen/threshold2"
+        />
     </Group>
 </Group>
