@@ -5,7 +5,7 @@ export default class ModbusRTU {
 
     private client = new ModbusSerial();
 
-    async connect() {
+    async connect(port: string) {
         return this.client.connectRTUBuffered("COM4", { baudRate: 115200 });
     }
 
