@@ -13,7 +13,6 @@
     const val = writable(false);
 
     onMount(() => {
-        console.log(topic);
         MQTT.subscribe(topic, (v) => {
             if (v == "true") val.set(true);
             else val.set(false);

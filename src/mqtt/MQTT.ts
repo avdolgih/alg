@@ -1,4 +1,5 @@
-import { MqttClient, connect } from "mqtt/dist/mqtt.min";
+import { browser } from "$app/environment";
+import { MqttClient, connect } from "mqtt";
 
 type onMessage = (msg: string) => void;
 
