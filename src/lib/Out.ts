@@ -1,6 +1,5 @@
 import type IOut from "./IOut";
 
-
 export default class Out<T> implements IOut<T> {
 
     private val: T;
@@ -32,5 +31,9 @@ export default class Out<T> implements IOut<T> {
 
     unsubscribe(callback: (val: T) => void): void {
         this.subscribers.delete(callback);
+    }
+
+    getType() : string {
+        return typeof this.val;
     }
 }

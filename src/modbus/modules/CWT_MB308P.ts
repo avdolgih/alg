@@ -1,5 +1,5 @@
-import In from "../../lib/In";
-import Out from "../../lib/IO/Out";
+import In from "$lib/In";
+import Out from "$lib/Out";
 import type ModbusRTU from "../ModbusRTU";
 
 export default class CWT_MB308P {
@@ -12,42 +12,38 @@ export default class CWT_MB308P {
         this.addr = addr;
     }
 
-    readonly do1: In<boolean> = new In(false, () => this.write);
-    readonly do2: In<boolean> = new In(false, () => this.write);
-    readonly do3: In<boolean> = new In(false, () => this.write);
-    readonly do4: In<boolean> = new In(false, () => this.write);
-    readonly do5: In<boolean> = new In(false, () => this.write);
-    readonly do6: In<boolean> = new In(false, () => this.write);
+    readonly do1 = new In(false);
+    readonly do2 = new In(false);
+    readonly do3 = new In(false);
+    readonly do4 = new In(false);
+    readonly do5 = new In(false);
+    readonly do6 = new In(false);
 
-    readonly di1: Out<boolean> = new Out(false);
-    readonly di2: Out<boolean> = new Out(false);
-    readonly di3: Out<boolean> = new Out(false);
-    readonly di4: Out<boolean> = new Out(false);
-    readonly di5: Out<boolean> = new Out(false);
-    readonly di6: Out<boolean> = new Out(false);
-    readonly di7: Out<boolean> = new Out(false);
-    readonly di8: Out<boolean> = new Out(false);
+    readonly di1 = new Out(false);
+    readonly di2 = new Out(false);
+    readonly di3 = new Out(false);
+    readonly di4 = new Out(false);
+    readonly di5 = new Out(false);
+    readonly di6 = new Out(false);
+    readonly di7 = new Out(false);
+    readonly di8 = new Out(false);
 
-    readonly ai1: Out<number> = new Out(0);
-    readonly ai2: Out<number> = new Out(0);
-    readonly ai3: Out<number> = new Out(0);
-    readonly ai4: Out<number> = new Out(0);
-    readonly ai5: Out<number> = new Out(0);
-    readonly ai6: Out<number> = new Out(0);
-    readonly ai7: Out<number> = new Out(0);
-    readonly ai8: Out<number> = new Out(0);
-    readonly ai9: Out<number> = new Out(0);
-    readonly ai10: Out<number> = new Out(0);
-    readonly ai11: Out<number> = new Out(0);
-    readonly ai12: Out<number> = new Out(0);
-    readonly ai13: Out<number> = new Out(0);
-    readonly ai14: Out<number> = new Out(0);
-    readonly ai15: Out<number> = new Out(0);
-    readonly ai16: Out<number> = new Out(0);
-
-    private async write() {
-        console.log("Запись значения");
-    }
+    readonly ai1 = new Out(0);
+    readonly ai2 = new Out(0);
+    readonly ai3 = new Out(0);
+    readonly ai4 = new Out(0);
+    readonly ai5 = new Out(0);
+    readonly ai6 = new Out(0);
+    readonly ai7 = new Out(0);
+    readonly ai8 = new Out(0);
+    readonly ai9 = new Out(0);
+    readonly ai10 = new Out(0);
+    readonly ai11 = new Out(0);
+    readonly ai12 = new Out(0);
+    readonly ai13 = new Out(0);
+    readonly ai14 = new Out(0);
+    readonly ai15 = new Out(0);
+    readonly ai16 = new Out(0);
 
     async update() {
         const di = await this.client.readDI(this.addr, 0, 8);
