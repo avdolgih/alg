@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import { Align } from "../util/Align";
-    import MQTT from "../../mqtt/MQTT";
+    import MQTT from "../../mqtt/MQTTClient";
     import { writable, type Writable } from "svelte/store";
 
     export let x: number = 0;

@@ -46,41 +46,47 @@ export default class CWT_MB308P {
     readonly ai16 = new Out(0);
 
     async update() {
-        const di = await this.client.readDI(this.addr, 0, 8);
-        this.di1.set(di[0]);
-        this.di2.set(di[1]);
-        this.di3.set(di[2]);
-        this.di4.set(di[3]);
-        this.di5.set(di[4]);
-        this.di6.set(di[5]);
-        this.di7.set(di[6]);
-        this.di8.set(di[7]);
+        try {
 
-        const ai = await this.client.readAI(this.addr, 50, 16);
-        this.ai1.set(ai[0]);
-        this.ai2.set(ai[1]);
-        this.ai3.set(ai[2]);
-        this.ai4.set(ai[3]);
-        this.ai5.set(ai[4]);
-        this.ai6.set(ai[5]);
-        this.ai7.set(ai[6]);
-        this.ai8.set(ai[7]);
-        this.ai9.set(ai[8]);
-        this.ai10.set(ai[9]);
-        this.ai11.set(ai[10]);
-        this.ai12.set(ai[11]);
-        this.ai13.set(ai[12]);
-        this.ai14.set(ai[13]);
-        this.ai15.set(ai[14]);
-        this.ai16.set(ai[15]);
 
-        await this.client.writeDOs(this.addr, 0, [
-            this.do1.get(),
-            this.do2.get(),
-            this.do3.get(),
-            this.do4.get(),
-            this.do5.get(),
-            this.do6.get(),
-        ]);
+            const di = await this.client.readDI(this.addr, 0, 8);
+            this.di1.set(di[0]);
+            this.di2.set(di[1]);
+            this.di3.set(di[2]);
+            this.di4.set(di[3]);
+            this.di5.set(di[4]);
+            this.di6.set(di[5]);
+            this.di7.set(di[6]);
+            this.di8.set(di[7]);
+
+            const ai = await this.client.readAI(this.addr, 50, 16);
+            this.ai1.set(ai[0]);
+            this.ai2.set(ai[1]);
+            this.ai3.set(ai[2]);
+            this.ai4.set(ai[3]);
+            this.ai5.set(ai[4]);
+            this.ai6.set(ai[5]);
+            this.ai7.set(ai[6]);
+            this.ai8.set(ai[7]);
+            this.ai9.set(ai[8]);
+            this.ai10.set(ai[9]);
+            this.ai11.set(ai[10]);
+            this.ai12.set(ai[11]);
+            this.ai13.set(ai[12]);
+            this.ai14.set(ai[13]);
+            this.ai15.set(ai[14]);
+            this.ai16.set(ai[15]);
+
+            await this.client.writeDOs(this.addr, 0, [
+                this.do1.get(),
+                this.do2.get(),
+                this.do3.get(),
+                this.do4.get(),
+                this.do5.get(),
+                this.do6.get(),
+            ]);
+        } catch (e) {
+            console.log(e);
+        }
     }
 }

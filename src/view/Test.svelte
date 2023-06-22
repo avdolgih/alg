@@ -1,5 +1,5 @@
 <script lang="ts">
-    import MQTT from "../mqtt/MQTT";
+    import MQTT from "../mqtt/MQTTClient";
 
     let topic: string = "/nku/threshold1/alarm";
     let value: string = "true";

@@ -1,17 +1,26 @@
 import type Out from "$lib/Out";
 import ModbusRTU from "./modbus/ModbusRTU";
 import CWT_MB308P from "./modbus/modules/CWT_MB308P";
-import MQTT from "./mqtt/MQTT";
+import MQTT from "./mqtt/MQTTServer";
 
 const modbus = new ModbusRTU();
 const module1 = new CWT_MB308P(modbus, 2);
 
 (async () => {
-    await modbus.connect("ttyUSB0");
-    while (true) {
-        await module1.update();
+    try {
+        await modbus.connect("ttyUSB0");
+        while (true) {
+            await module1.update();
+        }
+    } catch (e) {
+        console.log(e);
     }
 })();
+
+setInterval(() => {
+    module1.ai1.set(module1.ai1.get() + 1);
+    module1.di1.set(!module1.di1.get());
+}, 1000)
 
 sub(module1.ai1, "/nku/module1/ai1");
 sub(module1.ai2, "/nku/module1/ai2");

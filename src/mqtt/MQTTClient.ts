@@ -1,5 +1,4 @@
-import { browser } from "$app/environment";
-import { MqttClient, connect } from "mqtt";
+import { MqttClient, connect } from "mqtt/dist/mqtt.min";
 
 type onMessage = (msg: string) => void;
 
@@ -30,5 +29,4 @@ class MQTT {
         this.client.publish(topic, msg, { retain: true, qos: 1 });
     }
 }
-
 export default new MQTT("ws://test.mosquitto.org:8080");

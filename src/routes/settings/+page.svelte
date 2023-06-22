@@ -1,5 +1,5 @@
 <script lang="ts">
-    import Value from "../view/settings/Value.svelte";
+    import Value from "../../view/settings/Value.svelte";
 
     const items = [
         "/nku/module1/ai1",
