@@ -2,7 +2,6 @@ import ModbusRTU from "../modbus/ModbusRTU";
 import CWT_MB308P from "../modbus/modules/CWT_MB308P";
 import Filter from "./devices/Filter";
 
-
 export default {
     test: () => {
         const modbusRTU = new ModbusRTU();
