@@ -11,6 +11,7 @@ const module1 = new CWT_MB308P(modbus, 2);
         await modbus.connect("/dev/ttyUSB0");
         console.log("connected");
         while (true) {
+            console.log("update");
             await module1.update();
         }
     } catch (e) {
