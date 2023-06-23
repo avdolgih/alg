@@ -2,11 +2,11 @@ import ModbusSerial from "modbus-serial";
 import type { WriteMultipleResult } from "modbus-serial/ModbusRTU";
 
 export default class ModbusRTU {
-
+    
     private client = new ModbusSerial();
 
     async connect(port: string) {
-        return this.client.connectRTUBuffered(port, { baudRate: 115200 });
+        return this.client.connectRTU(port, { baudRate: 115200 });
     }
 
     async readDI(addr: number, reg: number, count: number): Promise<boolean[]> {
