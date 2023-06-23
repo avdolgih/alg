@@ -6,17 +6,16 @@ import MQTT from "./mqtt/MQTTServer";
 const modbus = new ModbusRTU();
 const module1 = new CWT_MB308P(modbus, 2);
 
-async function init() {
+(async () => {
     try {
-        await modbus.connect("ttyUSB0");
+        await modbus.connect("localhost");
         while (true) {
             await module1.update();
         }
-    } catch(e) {
+    } catch (e) {
         console.log(e);
     }
-}
-init();
+})();
 
 sub(module1.ai1, "/nku/module1/ai1");
 sub(module1.ai2, "/nku/module1/ai2");

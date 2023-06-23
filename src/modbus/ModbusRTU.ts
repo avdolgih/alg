@@ -2,11 +2,12 @@ import ModbusSerial from "modbus-serial";
 import type { WriteMultipleResult } from "modbus-serial/ModbusRTU";
 
 export default class ModbusRTU {
-    
+
     private client = new ModbusSerial();
 
     async connect(port: string) {
-        return this.client.connectRTU(port, { baudRate: 115200 });
+        console.log("hello");
+        return this.client.connectTCP(port, { port: 80 });
     }
 
     async readDI(addr: number, reg: number, count: number): Promise<boolean[]> {
@@ -24,7 +25,7 @@ export default class ModbusRTU {
         return ((await this.client.writeCoil(reg, val)).state)
     }
 
-    async writeDOs(addr: number, reg: number, val: boolean[]) : Promise<WriteMultipleResult> {
+    async writeDOs(addr: number, reg: number, val: boolean[]): Promise<WriteMultipleResult> {
         this.client.setID(addr);
         return (await this.client.writeCoils(reg, val));
     }
