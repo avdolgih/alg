@@ -47,9 +47,8 @@ export default class CWT_MB308P {
 
     async update() {
         try {
-
-
             const di = await this.client.readDI(this.addr, 0, 8);
+            console.log(di);
             this.di1.set(di[0]);
             this.di2.set(di[1]);
             this.di3.set(di[2]);
@@ -60,6 +59,7 @@ export default class CWT_MB308P {
             this.di8.set(di[7]);
 
             const ai = await this.client.readAI(this.addr, 50, 16);
+            console.log(ai);
             this.ai1.set(ai[0]);
             this.ai2.set(ai[1]);
             this.ai3.set(ai[2]);
