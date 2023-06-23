@@ -1,6 +1,6 @@
 <script lang="ts">
     import { writable, type Writable } from "svelte/store";
-    import Value from "../../view/settings/Value.svelte";
+    import Value from "../../view/settings/Val.svelte";
     import P277GSM from "../../view/systems/P277GSM.svelte";
     import P277RSM from "../../view/systems/P277RSM.svelte";
     import P277TU from "../../view/systems/P277TU.svelte";
