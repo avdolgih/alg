@@ -12,7 +12,7 @@ const module1 = new CWT_MB308P(modbus, 2);
         console.log("connected");
         while (true) {
             console.log("update");
-            // await module1.update();
+            await module1.update();
         }
     } catch (e) {
         console.log(e);
