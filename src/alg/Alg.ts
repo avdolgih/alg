@@ -1,5 +1,5 @@
-import ModbusRTU from "../modbus/ModbusRTU";
-import CWT_MB308P from "../modbus/modules/CWT_MB308P";
+import ModbusRTU from "../net/ModbusRTU";
+import CWT_MB308P from "../net/modules/CWT_MB308P";
 import Filter from "./devices/Filter";
 
 export default {

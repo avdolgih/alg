@@ -1,23 +1,36 @@
 import type Out from "$lib/Out";
-import ModbusRTU from "./modbus/ModbusRTU";
-import CWT_MB308P from "./modbus/modules/CWT_MB308P";
-import MQTT from "./mqtt/MQTTServer";
+import ModbusRTU from "./net/ModbusRTU";
+import CWT_MB308P from "./net/modules/CWT_MB308P";
+import MQTT from "./net/MQTTServer";
+
+
+import Aedes from 'aedes';
+import { createServer } from 'http';
+import ws from "websocket-stream";
+
+const port = 8888;
+const aedes = new Aedes();
+const httpServer = createServer();
+ws.createServer({ server: httpServer }, new Aedes().handle);
+httpServer.listen(port, function () {
+    console.log('websocket server listening on port ', port)
+});
 
 const modbus = new ModbusRTU();
 const module1 = new CWT_MB308P(modbus, 2);
 
-(async () => {
-    try {
-        await modbus.connect("/dev/ttyUSB0");
-        console.log("connected");
-        while (true) {
-            console.log("update");
-            await module1.update();
-        }
-    } catch (e) {
-        console.log(e);
-    }
-})();
+// (async () => {
+//     try {
+//         await modbus.connect("/dev/ttyUSB0");
+//         console.log("connected");
+//         while (true) {
+//             console.log("update");
+//             await module1.update();
+//         }
+//     } catch (e) {
+//         console.log(e);
+//     }
+// })();
 
 sub(module1.ai1, "/nku/module1/ai1");
 sub(module1.ai2, "/nku/module1/ai2");

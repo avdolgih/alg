@@ -5,7 +5,7 @@
     import { Align } from "../util/Align";
     import Button from "../element/Button.svelte";
     import Image from "../element/Image.svelte";
-    import MQTT from "../../mqtt/MQTTClient";
+    import MQTT from "../../net/MQTTClient";
     import { onMount } from "svelte";
 
     export let x: number;

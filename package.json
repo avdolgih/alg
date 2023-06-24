@@ -21,7 +21,10 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"aedes": "^0.49.0",
+		"http": "^0.0.1-security",
 		"modbus-serial": "^8.0.11",
-		"mqtt": "^4.3.7"
+		"mqtt": "^4.3.7",
+		"websocket-stream": "^5.5.2"
 	}
 }

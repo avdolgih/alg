@@ -1,6 +1,6 @@
 <script lang="ts">
     import { writable } from "svelte/store";
-    import MQTT from "../../mqtt/MQTTClient";
+    import MQTT from "../../net/MQTTClient";
     import { onMount } from "svelte";
 
     export let topic: string;

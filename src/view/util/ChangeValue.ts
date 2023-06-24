@@ -1,4 +1,4 @@
-import type { MQTT } from "../../mqtt/MQTTClient";
+import type { MQTT } from "../../net/MQTTClient";
 import type IAction from "./IAction";
 
 export enum Type {
