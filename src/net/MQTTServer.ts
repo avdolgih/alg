@@ -29,4 +29,4 @@ class MQTT {
         this.client.publish(topic, msg, { retain: true, qos: 1 });
     }
 }
-export default new MQTT("ws://localhost:8888");
+export default new MQTT("ws://localhost:8080");
