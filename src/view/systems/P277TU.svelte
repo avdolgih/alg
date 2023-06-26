@@ -18,9 +18,9 @@
         text="Концентрация пропана ∑CH"
     />
     <Group x={10} y={200}>
-        <Output x={0} y={0} text="Датчик 1" topic="/nku/propane/sensor1" />
-        <Output x={0} y={100} text="Датчик 2" topic="/nku/propane/sensor2" />
-        <Output x={0} y={200} text="Датчик 3" topic="/nku/propane/sensor3" />
+        <Output x={0} y={0} text="Датчик 1" topic="/propane/sensor1" />
+        <Output x={0} y={100} text="Датчик 2" topic="/propane/sensor2" />
+        <Output x={0} y={200} text="Датчик 3" topic="/propane/sensor3" />
     </Group>
     <Group x={440} y={200}>
         <Input
@@ -30,7 +30,7 @@
             step={1}
             min={0}
             max={100}
-            topic="/nku/propane/threshold1"
+            topic="/propane/threshold1"
         />
         <Input
             x={0}
@@ -39,7 +39,7 @@
             step={1}
             min={0}
             max={100}
-            topic="/nku/propane/threshold2"
+            topic="/propane/threshold2"
         />
     </Group>
 </Group>
@@ -55,9 +55,9 @@
         text="Концентрация метанола CH₃OH"
     />
     <Group x={10} y={200}>
-        <Output x={0} y={0} text="Датчик 1" topic="/nku/methanol/sensor1" />
-        <Output x={0} y={100} text="Датчик 2" topic="/nku/methanol/sensor2" />
-        <Output x={0} y={200} text="Датчик 3" topic="/nku/methanol/sensor3" />
+        <Output x={0} y={0} text="Датчик 1" topic="/methanol/sensor1" />
+        <Output x={0} y={100} text="Датчик 2" topic="/methanol/sensor2" />
+        <Output x={0} y={200} text="Датчик 3" topic="/methanol/sensor3" />
     </Group>
     <Group x={440} y={200}>
         <Input
@@ -67,7 +67,7 @@
             step={1}
             min={0}
             max={100}
-            topic="/nku/methanol/threshold1"
+            topic="/methanol/threshold1"
         />
         <Input
             x={0}
@@ -76,7 +76,7 @@
             step={1}
             min={0}
             max={100}
-            topic="/nku/methanol/threshold2"
+            topic="/methanol/threshold2"
         />
     </Group>
 </Group>
@@ -92,10 +92,10 @@
         text="Концентрация аммиака NH₃"
     />
     <Group x={10} y={200}>
-        <Output x={0} y={0} text="Датчик 1" topic="/nku/ammonia/sensor1" />
-        <Output x={0} y={100} text="Датчик 2" topic="/nku/ammonia/sensor2" />
-        <Output x={0} y={200} text="Датчик 3" topic="/nku/ammonia/sensor3" />
-        <Output x={0} y={300} text="Датчик 4" topic="/nku/ammonia/sensor4" />
+        <Output x={0} y={0} text="Датчик 1" topic="/ammonia/sensor1" />
+        <Output x={0} y={100} text="Датчик 2" topic="/ammonia/sensor2" />
+        <Output x={0} y={200} text="Датчик 3" topic="/ammonia/sensor3" />
+        <Output x={0} y={300} text="Датчик 4" topic="/ammonia/sensor4" />
     </Group>
     <Group x={440} y={300}>
         <Input
@@ -105,7 +105,7 @@
             step={1}
             min={0}
             max={100}
-            topic="/nku/ammonia/threshold1"
+            topic="/ammonia/threshold1"
         />
         <Input
             x={0}
@@ -114,7 +114,7 @@
             step={1}
             min={0}
             max={100}
-            topic="/nku/ammonia/threshold2"
+            topic="/ammonia/threshold2"
         />
     </Group>
 </Group>
@@ -130,9 +130,9 @@
         text="Концентрация кислорода O₂"
     />
     <Group x={10} y={200}>
-        <Output x={0} y={0} text="Датчик 1" topic="/nku/oxygen/sensor1" />
-        <Output x={0} y={100} text="Датчик 2" topic="/nku/oxygen/sensor2" />
-        <Output x={0} y={200} text="Датчик 3" topic="/nku/oxygen/sensor3" />
+        <Output x={0} y={0} text="Датчик 1" topic="/oxygen/sensor1" />
+        <Output x={0} y={100} text="Датчик 2" topic="/oxygen/sensor2" />
+        <Output x={0} y={200} text="Датчик 3" topic="/oxygen/sensor3" />
     </Group>
     <Group x={440} y={200}>
         <Input
@@ -142,7 +142,7 @@
             step={1}
             min={0}
             max={100}
-            topic="/nku/oxygen/threshold1"
+            topic="/oxygen/threshold1"
         />
         <Input
             x={0}
@@ -151,7 +151,7 @@
             step={1}
             min={0}
             max={100}
-            topic="/nku/oxygen/threshold2"
+            topic="/oxygen/threshold2"
         />
     </Group>
 </Group>
@@ -167,7 +167,7 @@
         text="Концентрация водорода H₂"
     />
     <Group x={10} y={200}>
-        <Output x={0} y={0} text="Датчик 1" topic="/nku/hydrogen/sensor1" />
+        <Output x={0} y={0} text="Датчик 1" topic="/hydrogen/sensor1" />
     </Group>
     <Group x={440} y={200}>
         <Input
@@ -177,7 +177,7 @@
             step={1}
             min={0}
             max={100}
-            topic="/nku/hydrogen/threshold1"
+            topic="/hydrogen/threshold1"
         />
         <Input
             x={0}
@@ -186,7 +186,7 @@
             step={1}
             min={0}
             max={100}
-            topic="/nku/hydrogen/threshold2"
+            topic="/hydrogen/threshold2"
         />
     </Group>
 </Group>

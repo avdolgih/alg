@@ -1,9 +1,11 @@
-import { MqttClient, connect } from "mqtt";
+import type In from "$lib/vars/In";
+import type Out from "$lib/vars/Out";
+import { connect } from "mqtt";
 
 type onMessage = (msg: string) => void;
 
 class MQTT {
-    private client: MqttClient;
+    private client;
     private readonly subscribers = new Map<string, onMessage[]>();
 
     constructor(url: string) {
@@ -25,8 +27,21 @@ class MQTT {
             subs.push(onMessage);
     }
 
+
+    subscribeIn<T>(topic: string, val: In<T>) {
+        if (val.getType() === "number")
+            this.subscribe(topic, (msg) => (<In<number>><unknown>val).set(parseFloat(msg)));
+        else if (val.getType() === "boolean")
+            this.subscribe(topic, (msg) => (<In<boolean>><unknown>val).set(msg === "true" ? true : false));
+    }
+
     publish(topic: string, msg: string) {
         this.client.publish(topic, msg, { retain: true, qos: 1 });
+    }
+
+    bind<T>(topic: string, val: Out<T>) {
+        if (val.getType() === "number")
+            val.subscribe((val) => { this.publish(topic, val.toString())});
     }
 }
 export default new MQTT("ws://localhost:8080");

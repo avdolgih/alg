@@ -1,9 +1,10 @@
-import { MqttClient, connect } from "mqtt/dist/mqtt.min";
+import type In from "$lib/vars/In";
+import { connect } from "mqtt/dist/mqtt.min";
 
 type onMessage = (msg: string) => void;
 
 class MQTT {
-    private client: MqttClient;
+    private client;
     private readonly subscribers = new Map<string, onMessage[]>();
 
     constructor(url: string) {
@@ -14,15 +15,20 @@ class MQTT {
             const value = payload.toString();
             onMessage.forEach(f => f(value));
         });
+        this.client.on("connect", () => {
+            console.log("MQTT connected");
+        });
+        this.client.on("disconnect", () => {
+            console.log("MQTT disconnected");
+        });
     }
 
     subscribe(topic: string, onMessage: onMessage) {
         const subs = this.subscribers.get(topic);
         if (!subs) {
-            this.client.subscribe(topic);
             this.subscribers.set(topic, [onMessage]);
-        } else
-            subs.push(onMessage);
+            this.client.subscribe(topic);
+        } else subs.push(onMessage);
     }
 
     publish(topic: string, msg: string) {

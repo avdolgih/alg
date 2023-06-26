@@ -1,5 +1,5 @@
 import { building } from "$app/environment";
-import type Out from "$lib/Out";
+import type Out from "$lib/vars/Out";
 import ModbusRTU from "./net/ModbusRTU";
 import CWT_MB308P from "./net/modules/CWT_MB308P";
 import MQTT from "./net/MQTTServer";
@@ -13,7 +13,6 @@ if (!building) {    //если не сделать эту проверку то 
             await modbus.connect("/dev/ttyUSB0");
             console.log("connected");
             while (true) {
-                console.log("update");
                 await module1.update();
             }
         } catch (e) {
@@ -21,7 +20,6 @@ if (!building) {    //если не сделать эту проверку то 
         }
     })();
 }
-
 
 sub(module1.ai1, "/nku/module1/ai1");
 sub(module1.ai2, "/nku/module1/ai2");

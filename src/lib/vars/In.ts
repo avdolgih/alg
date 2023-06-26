@@ -21,4 +21,8 @@ export default class In<T> {
     get(): T {
         return this.val;
     }
+
+    getType() : string {
+        return typeof this.val;
+    }
 }

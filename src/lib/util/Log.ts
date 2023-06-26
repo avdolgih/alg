@@ -1,4 +1,4 @@
-import type IOut from "$lib/IOut";
+import type IOut from "$lib/vars/IOut";
 
 export default class Log<T> {
 

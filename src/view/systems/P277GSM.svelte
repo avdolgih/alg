@@ -16,8 +16,8 @@
     text="Концентрация пропана ∑CH"
 />
 <Group x={10} y={200}>
-    <Output x={0} y={0} text="Датчик 1" topic="/nku/sensor1" />
-    <Output x={0} y={100} text="Датчик 2" topic="/nku/sensor2" />
+    <Output x={0} y={0} text="Датчик 1" topic="/sensor1" />
+    <Output x={0} y={100} text="Датчик 2" topic="/sensor2" />
 </Group>
 <Group x={440} y={200}>
     <Input
@@ -27,7 +27,7 @@
         step={1}
         min={0}
         max={100}
-        topic="/nku/threshold1"
+        topic="/threshold1"
     />
     <Input
         x={0}
@@ -36,6 +36,6 @@
         step={1}
         min={0}
         max={100}
-        topic="/nku/threshold2"
+        topic="/threshold2"
     />
 </Group>
