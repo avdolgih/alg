@@ -1,10 +1,12 @@
 import { connect } from "mqtt";
+import Writable from "../../var/Writable";
+import Readable from "../../var/Readable";
 
-type onMessage = (msg: string) => void;
+type Action = (v: string) => void;
 
-class MQTT {
+export default class Mqtt {
     private client;
-    private readonly subscribers = new Map<string, onMessage[]>();
+    private readonly subscribers = new Map<string, Action[]>();
 
     constructor(url: string) {
         this.client = connect(url);
@@ -16,7 +18,7 @@ class MQTT {
         });
     }
 
-    subscribe(topic: string, onMessage: onMessage) {
+    subscribe(topic: string, onMessage: Action) {
         const subs = this.subscribers.get(topic);
         if (!subs) {
             this.client.subscribe(topic);
@@ -28,5 +30,12 @@ class MQTT {
     publish(topic: string, msg: string) {
         this.client.publish(topic, msg, { retain: true, qos: 1 });
     }
+
+    subscribeWritable<T>(topic: string, w: Writable<T>) {
+        this.subscribe(topic, v => w.setString(v));
+    }
+
+    publishReadable<T>(topic: string, w: Readable<T>) {
+        w.subscribe(() => this.publish(topic, w.toString()));
+    }
 }
-export default new MQTT("ws://localhost:8080");

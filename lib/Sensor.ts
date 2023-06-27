@@ -1,13 +1,19 @@
+import Readable from "../var/Readable";
+import Writable from "../var/Writable";
+
 export default class Sensor {
-    sensor: number = 0;
-    offset: number = 0;
-    multiplier: number = 1;
-    value: number = 0;
+    readonly in = new Writable<number>(0);
+    readonly offset = new Writable<number>(0);
+    readonly multiplier = new Writable<number>(0);
+
+
+    private readonly _out = new Writable<number>(0);
+    get out(): Readable<number> { return this._out }
 
     update() {
-        const sensor = this.sensor;
-        const offset = this.offset;
-        const multiplier = this.multiplier;
-        this.value = (sensor + offset) * multiplier;
+        const in_ = this.in.val;
+        const offset = this.offset.val;
+        const multiplier = this.multiplier.val;
+        this._out.val = (in_ + offset) * multiplier;
     }
 }

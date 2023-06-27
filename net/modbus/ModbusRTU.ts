@@ -5,9 +5,9 @@ export default class ModbusRTU {
 
     private client = new ModbusSerial();
 
-    async connect(port: string) {
+    constructor(port: string) {
         this.client.setTimeout(500);
-        return this.client.connectRTUBuffered(port, { baudRate: 115200 });
+        this.client.connectRTUBuffered(port, { baudRate: 115200 });
     }
 
     async readDI(addr: number, reg: number, count: number): Promise<boolean[]> {

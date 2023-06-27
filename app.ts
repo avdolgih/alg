@@ -1,21 +1,11 @@
-import Sensor from "./lib/Sensor";
-import ModbusRTU from "./net/ModbusRTU";
-import CWT_MB308P from "./net/modules/CWT_MB308P";
+import fs from "fs";
+import P277GSM from "./alg/P277GSM";
 
-const modbus = new ModbusRTU();
-const module1 = new CWT_MB308P(modbus, 2);
-modbus.connect("ttyUSB0");
-
-const sensor1 = new Sensor();
-sensor1.multiplier = 1 / 100;
-
-const sensor2 = new Sensor();
-sensor2.multiplier = 1 / 100;
-
-(() => {
-    sensor1.sensor = module1.ai1;
-    sensor1.update();
-
-    sensor2.sensor = module1.ai2;
-    sensor2.update();
-})();
+const conf = fs.readFileSync("config.conf").toString();
+let alg;
+switch (conf) {
+    case "P277GSM":
+        new P277GSM();
+        break;
+    default: throw new Error("Алгоритм " + conf + " не найден");
+}
