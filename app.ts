@@ -2,7 +2,6 @@ import fs from "fs";
 import P277GSM from "./alg/P277GSM";
 
 const conf = fs.readFileSync("config.conf").toString();
-let alg;
 switch (conf) {
     case "P277GSM":
         new P277GSM();

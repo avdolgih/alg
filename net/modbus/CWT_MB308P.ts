@@ -73,32 +73,32 @@ export default class CWT_MB308P implements Device {
     async update() {
         try {
             const di = await this.client.readDI(this.addr, 0, 8);
-            this._di1.val = di[0];
-            this._di2.val = di[1];
-            this._di3.val = di[2];
-            this._di4.val = di[3];
-            this._di5.val = di[4];
-            this._di6.val = di[5];
-            this._di7.val = di[6];
-            this._di8.val = di[7];
+            this._di1.setVal(di[0]);
+            this._di2.setVal(di[1]);
+            this._di3.setVal(di[2]);
+            this._di4.setVal(di[3]);
+            this._di5.setVal(di[4]);
+            this._di6.setVal(di[5]);
+            this._di7.setVal(di[6]);
+            this._di8.setVal(di[7]);
 
             const ai = await this.client.readAI(this.addr, 50, 16);
-            this._ai1.val = ai[0];
-            this._ai2.val = ai[1];
-            this._ai3.val = ai[2];
-            this._ai4.val = ai[3];
-            this._ai5.val = ai[4];
-            this._ai6.val = ai[5];
-            this._ai7.val = ai[6];
-            this._ai8.val = ai[7];
-            this._ai9.val = ai[8];
-            this._ai10.val = ai[9];
-            this._ai11.val = ai[10];
-            this._ai12.val = ai[11];
-            this._ai13.val = ai[12];
-            this._ai14.val = ai[13];
-            this._ai15.val = ai[14];
-            this._ai16.val = ai[15];
+            this._ai1.setVal(ai[0]);
+            this._ai2.setVal(ai[1]);
+            this._ai3.setVal(ai[2]);
+            this._ai4.setVal(ai[3]);
+            this._ai5.setVal(ai[4]);
+            this._ai6.setVal(ai[5]);
+            this._ai7.setVal(ai[6]);
+            this._ai8.setVal(ai[7]);
+            this._ai9.setVal(ai[8]);
+            this._ai10.setVal(ai[9]);
+            this._ai11.setVal(ai[10]);
+            this._ai12.setVal(ai[11]);
+            this._ai13.setVal(ai[12]);
+            this._ai14.setVal(ai[13]);
+            this._ai15.setVal(ai[14]);
+            this._ai16.setVal(ai[15]);
 
             await this.client.writeDOs(this.addr, 0, [
                 this.do1,

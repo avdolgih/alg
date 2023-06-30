@@ -7,7 +7,7 @@ export default abstract class Readable<T> {
         this._val = val;
     }
 
-    get val() {
+    getVal() {
         return this._val;
     }
 

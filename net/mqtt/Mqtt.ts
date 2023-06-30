@@ -18,13 +18,13 @@ export default class Mqtt {
         });
     }
 
-    subscribe(topic: string, onMessage: Action) {
+    subscribe(topic: string, action: Action) {
         const subs = this.subscribers.get(topic);
         if (!subs) {
             this.client.subscribe(topic);
-            this.subscribers.set(topic, [onMessage]);
+            this.subscribers.set(topic, [action]);
         } else
-            subs.push(onMessage);
+            subs.push(action);
     }
 
     publish(topic: string, msg: string) {
@@ -36,6 +36,8 @@ export default class Mqtt {
     }
 
     publishReadable<T>(topic: string, w: Readable<T>) {
-        w.subscribe(() => this.publish(topic, w.toString()));
+        w.subscribe((val) => {
+            this.publish(topic, w.getString())
+        });
     }
 }
