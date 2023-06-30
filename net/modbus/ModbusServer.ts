@@ -3,17 +3,16 @@ import Device from "./Device";
 
 export default class ModbusServer {
 
-    private readonly modbusRTU;
     private readonly devices;
 
-    constructor(port: string, devices: Device[]) {
-        this.modbusRTU = new ModbusRTU(port);
+    constructor(devices: Device[]) {
         this.devices = devices;
+        this.start();
     }
 
-    // start() {
-    //     while (true) {
-    //         this.devices.forEach()
-    //     }
-    // }
+    start() {
+        while (true) {
+            this.devices.forEach(async d => { await d.update() });
+        }
+    }
 }
