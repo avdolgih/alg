@@ -1,8 +1,8 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import { Align } from "../util/Align";
-    import MQTT from "../../net/MQTTClient";
     import { writable, type Writable } from "svelte/store";
+    import Mqtt from "../../net/Mqtt";
 
     export let x: number = 0;
     export let y: number = 0;
@@ -16,7 +16,7 @@
     const val = writable(0);
 
     onMount(() => {
-        MQTT.subscribe(topic, (v) => {
+        Mqtt.subscribe(topic, (v) => {
             val.set(parseFloat(v));
         });
     });

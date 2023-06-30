@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import { writable } from "svelte/store";
-    import MQTT from "../../net/MQTTClient";
+    import Mqtt from "../../net/Mqtt";
 
     export let x: number;
     export let y: number;
@@ -13,7 +13,7 @@
     const val = writable(false);
 
     onMount(() => {
-        MQTT.subscribe(topic, (v) => {
+        Mqtt.subscribe(topic, (v) => {
             if (v == "true") val.set(true);
             else val.set(false);
         });

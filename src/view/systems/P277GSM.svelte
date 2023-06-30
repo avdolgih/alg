@@ -27,7 +27,8 @@
         step={1}
         min={0}
         max={100}
-        topic="/threshold1"
+        topicSetpoint="/threshold1"
+        topicAlarm="/alarm1"
     />
     <Input
         x={0}
@@ -36,6 +37,7 @@
         step={1}
         min={0}
         max={100}
-        topic="/threshold2"
+        topicSetpoint="/threshold2"
+        topicAlarm="/alarm2"
     />
 </Group>

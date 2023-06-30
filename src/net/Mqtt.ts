@@ -1,11 +1,10 @@
-import type In from "$lib/vars/In";
 import { connect } from "mqtt/dist/mqtt.min";
 
-type onMessage = (msg: string) => void;
+type Action = (v: string) => void;
 
-class MQTT {
+class Mqtt {
     private client;
-    private readonly subscribers = new Map<string, onMessage[]>();
+    private readonly subscribers = new Map<string, Action[]>();
 
     constructor(url: string) {
         this.client = connect(url);
@@ -23,16 +22,16 @@ class MQTT {
         });
     }
 
-    subscribe(topic: string, onMessage: onMessage) {
+    subscribe(topic: string, action: Action) {
         const subs = this.subscribers.get(topic);
         if (!subs) {
-            this.subscribers.set(topic, [onMessage]);
+            this.subscribers.set(topic, [action]);
             this.client.subscribe(topic);
-        } else subs.push(onMessage);
+        } else subs.push(action);
     }
 
     publish(topic: string, msg: string) {
         this.client.publish(topic, msg, { retain: true, qos: 1 });
     }
 }
-export default new MQTT("ws://" + location.hostname + ":8080");
+export default new Mqtt("ws://" + location.hostname + ":8080");

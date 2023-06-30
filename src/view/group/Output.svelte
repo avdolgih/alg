@@ -3,7 +3,7 @@
     import Text from "../element/Text.svelte";
     import Number from "../element/Number.svelte";
     import { Align } from "../util/Align";
-
+    
     export let x: number;
     export let y: number;
     export let text: string;
