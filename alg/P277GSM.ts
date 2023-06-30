@@ -1,6 +1,6 @@
 import Sensor from "../lib/Sensor";
 import ModbusRTU from "../net/modbus/ModbusRTU";
-import CWT_MB308P from "../net/modbus/CWT_MB308P";
+import CWT_MB308P from "../net/modbus/modules/CWT_MB308P";
 import Writable from "../var/Writable";
 import Mqtt from "../net/mqtt/Mqtt";
 import Readable from "../var/Readable";

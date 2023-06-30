@@ -1,17 +1,12 @@
-import Readable from "../../var/Readable";
-import Writable from "../../var/Writable";
-import Device from "./Device";
-import type ModbusRTU from "./ModbusRTU";
+import Readable from "../../../var/Readable";
+import Writable from "../../../var/Writable";
+import Device from "../Device";
+import type ModbusRTU from "../ModbusRTU";
 
 export default class CWT_MB308P implements Device {
 
     private readonly client: ModbusRTU;
     private readonly addr: number;
-
-    constructor(client: ModbusRTU, addr: number) {
-        this.client = client;
-        this.addr = addr;
-    }
 
     private _di1 = new Writable<boolean>(false);
     get di1(): Readable<boolean> { return this._di1 }
@@ -63,53 +58,54 @@ export default class CWT_MB308P implements Device {
     private _ai16 = new Writable<number>(0);
     get ai16(): Readable<number> { return this._ai16 }
 
-    do1: boolean = false;
-    do2: boolean = false;
-    do3: boolean = false;
-    do4: boolean = false;
-    do5: boolean = false;
-    do6: boolean = false;
+    readonly do1 = new Writable<boolean>(false);
+    readonly do2 = new Writable<boolean>(false);
+    readonly do3 = new Writable<boolean>(false);
+    readonly do4 = new Writable<boolean>(false);
+    readonly do5 = new Writable<boolean>(false);
+    readonly do6 = new Writable<boolean>(false);
 
+    constructor(client: ModbusRTU, addr: number) {
+        this.client = client;
+        this.addr = addr;
+    }
+    
     async update() {
-        try {
-            const di = await this.client.readDI(this.addr, 0, 8);
-            this._di1.setVal(di[0]);
-            this._di2.setVal(di[1]);
-            this._di3.setVal(di[2]);
-            this._di4.setVal(di[3]);
-            this._di5.setVal(di[4]);
-            this._di6.setVal(di[5]);
-            this._di7.setVal(di[6]);
-            this._di8.setVal(di[7]);
+        const di = await this.client.readDIs(this.addr, 0, 8);
+        this._di1.setVal(di[0]);
+        this._di2.setVal(di[1]);
+        this._di3.setVal(di[2]);
+        this._di4.setVal(di[3]);
+        this._di5.setVal(di[4]);
+        this._di6.setVal(di[5]);
+        this._di7.setVal(di[6]);
+        this._di8.setVal(di[7]);
 
-            const ai = await this.client.readAI(this.addr, 50, 16);
-            this._ai1.setVal(ai[0]);
-            this._ai2.setVal(ai[1]);
-            this._ai3.setVal(ai[2]);
-            this._ai4.setVal(ai[3]);
-            this._ai5.setVal(ai[4]);
-            this._ai6.setVal(ai[5]);
-            this._ai7.setVal(ai[6]);
-            this._ai8.setVal(ai[7]);
-            this._ai9.setVal(ai[8]);
-            this._ai10.setVal(ai[9]);
-            this._ai11.setVal(ai[10]);
-            this._ai12.setVal(ai[11]);
-            this._ai13.setVal(ai[12]);
-            this._ai14.setVal(ai[13]);
-            this._ai15.setVal(ai[14]);
-            this._ai16.setVal(ai[15]);
+        const ai = await this.client.readAIs(this.addr, 50, 16);
+        this._ai1.setVal(ai[0]);
+        this._ai2.setVal(ai[1]);
+        this._ai3.setVal(ai[2]);
+        this._ai4.setVal(ai[3]);
+        this._ai5.setVal(ai[4]);
+        this._ai6.setVal(ai[5]);
+        this._ai7.setVal(ai[6]);
+        this._ai8.setVal(ai[7]);
+        this._ai9.setVal(ai[8]);
+        this._ai10.setVal(ai[9]);
+        this._ai11.setVal(ai[10]);
+        this._ai12.setVal(ai[11]);
+        this._ai13.setVal(ai[12]);
+        this._ai14.setVal(ai[13]);
+        this._ai15.setVal(ai[14]);
+        this._ai16.setVal(ai[15]);
 
-            await this.client.writeDOs(this.addr, 0, [
-                this.do1,
-                this.do2,
-                this.do3,
-                this.do4,
-                this.do5,
-                this.do6,
-            ]);
-        } catch (e) {
-            console.log(e);
-        }
+        await this.client.writeDOs(this.addr, 0, [
+            this.do1.getVal(),
+            this.do2.getVal(),
+            this.do3.getVal(),
+            this.do4.getVal(),
+            this.do5.getVal(),
+            this.do6.getVal(),
+        ]);
     }
 }
