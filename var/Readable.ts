@@ -1,3 +1,5 @@
+type Callback<T> = (val: T) => void
+
 export default abstract class Readable<T> {
 
     protected _val: T;
@@ -35,5 +37,3 @@ export default abstract class Readable<T> {
         }
     }
 }
-
-type Callback<T> = (val: T) => void
