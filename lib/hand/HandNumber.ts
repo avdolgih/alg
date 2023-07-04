@@ -20,6 +20,7 @@ export default class HandNumber implements HandVal {
     }
 
     update() {
+        console.log("update");
         const in_ = this.in.getVal();
         const hand = this.hand.getVal();
         const handVal = this.handVal.getVal();

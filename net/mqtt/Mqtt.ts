@@ -34,6 +34,7 @@ export default class Mqtt {
     }
 
     subscribeWritable<T>(topic: string, w: Writable<T>) {
+        console.log(topic);
         this.subscribe(topic, v => w.setString(v));
     }
 

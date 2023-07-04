@@ -5,10 +5,11 @@ import CWT_MB307A from "../../net/modbus/modules/CWT_MB307A";
 import CWT_MB308N from "../../net/modbus/modules/CWT_MB308N";
 import CWT_TM14PT1000 from "../../net/modbus/modules/CWT_TM14PT1000";
 import Mqtt from "../../net/mqtt/Mqtt";
+import IO from "./IO";
 
 export default class P239ITP {
 
-    readonly mqtt = new Mqtt("ws://localhost:8080");
+    readonly mqtt;
     private readonly modbus1 = new ModbusRTU("ttyUSB0");
     readonly module1 = new CWT_TM14PT1000(this.modbus1, 2);
     readonly module2 = new CWT_MB308N(this.modbus1, 3);
@@ -24,7 +25,9 @@ export default class P239ITP {
     readonly inverter7 = new InnovertISD(this.modbus2, 7);
     readonly inverter8 = new InnovertISD(this.modbus2, 8);
 
-    constructor() {
+    private readonly IO = new IO(this);
 
+    constructor(mqtt: Mqtt) {
+        this.mqtt = mqtt;
     }
 }
