@@ -1,7 +1,12 @@
-import Readable from "../var/Readable";
-import Writable from "../var/Writable";
+import Readable from "../../var/Readable";
+import Writable from "../../var/Writable";
+import HandVal from "./HandVal";
 
-export default class HandBool {
+export default class HandBool implements HandVal {
+    get type() {
+        return "boolean";
+    }
+
     readonly in = new Writable<boolean>(false);
     readonly hand = new Writable<boolean>(false);
     readonly handVal = new Writable<boolean>(false);

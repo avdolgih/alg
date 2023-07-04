@@ -3,11 +3,21 @@ import type { WriteMultipleResult } from "modbus-serial/ModbusRTU";
 
 export default class ModbusRTU {
 
+    private readonly port: string;
     private client = new ModbusSerial();
 
     constructor(port: string) {
+        this.port = port;
         this.client.setTimeout(500);
-        this.client.connectRTUBuffered(port, { baudRate: 115200 });
+        this.client.on("close", this.connect);
+    }
+
+    private connect() {
+        try {
+            this.client.connectRTUBuffered(this.port, { baudRate: 115200 });
+        } catch (e) {
+            console.log(e);
+        }
     }
 
     async readAI(addr: number, reg: number) {

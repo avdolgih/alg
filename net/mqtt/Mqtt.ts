@@ -1,6 +1,8 @@
 import { connect } from "mqtt";
 import Writable from "../../var/Writable";
 import Readable from "../../var/Readable";
+import HandNumber from "../../lib/hand/HandNumber";
+import HandVal from "../../lib/hand/HandVal";
 
 type Action = (v: string) => void;
 
@@ -35,9 +37,9 @@ export default class Mqtt {
         this.subscribe(topic, v => w.setString(v));
     }
 
-    publishReadable<T>(topic: string, w: Readable<T>) {
-        w.subscribe((val) => {
-            this.publish(topic, w.getString())
+    publishReadable<T>(topic: string, r: Readable<T>) {
+        r.subscribe((val) => {
+            this.publish(topic, r.getString())
         });
     }
 }
