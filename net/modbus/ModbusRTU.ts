@@ -1,5 +1,4 @@
 import ModbusSerial from "modbus-serial";
-import type { WriteMultipleResult } from "modbus-serial/ModbusRTU";
 
 export default class ModbusRTU {
 
