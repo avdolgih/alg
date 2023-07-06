@@ -28,6 +28,7 @@ const modbus = new ModbusRTU("ttyUSB0");
 const module1 = new CWT_MB308P(modbus, 2);
 
 (async () => {
+    
     while (true) {
         try {
             await module1.update();

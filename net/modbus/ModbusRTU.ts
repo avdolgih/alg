@@ -10,6 +10,7 @@ export default class ModbusRTU {
         this.port = port;
         this.client.setTimeout(500);
         this.client.on("close", this.connect);
+        this.connect();
     }
 
     private connect() {
