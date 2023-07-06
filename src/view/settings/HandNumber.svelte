@@ -1,27 +1,56 @@
 <script lang="ts">
-    import { writable } from "svelte/store";
+    import { writable, get } from "svelte/store";
     import { onMount } from "svelte";
     import Mqtt from "../../net/Mqtt";
 
     export let topic: string;
-    const val = writable("0");
-    let handVal: number = 0;
+    export let name: string;
+
+    const val = writable(0);
+    const hand = writable(false);
+    const handVal = writable(0);
 
     onMount(() => {
-        Mqtt.subscribe(topic, (v) => {
-            val.set(v);
+        Mqtt.subscribe(topic + "/val", (v) => {
+            val.set(parseFloat(v));
+        });
+
+        Mqtt.subscribe(topic + "/hand", (v) => {
+            if (v === "true") hand.set(true);
+            else if (v === "false") hand.set(false);
+            else throw new Error("Ожидается значение boolean");
+        });
+
+        Mqtt.subscribe(topic + "/handVal", (v) => {
+            handVal.set(parseFloat(v));
         });
     });
 
-    function write() {
-        Mqtt.publish(topic, handVal.toString());
+    function updateHandVal() {
+        const val = get(handVal).toString();
+        console.log(val);
+        Mqtt.publish(topic + "/handVal", val);
+    }
+
+    function updateHand() {
+        const val = get(hand).toString();
+        console.log(val);
+        Mqtt.publish(topic + "/hand", val);
     }
 </script>
 
-<div class="root">
-    <div class="topic">{topic}</div>
+<div class="root" title={topic}>
+    <div class="topic">{name}</div>
     <div class="value">{$val}</div>
-    <input type="number" bind:value={handVal} on:submit={write} />
+    <input
+        class="handVal"
+        type="number"
+        bind:value={$handVal}
+        on:change={updateHandVal}
+    />
+
+    <span>Ручной</span>
+    <input type="checkbox" id="hand" bind:checked={$hand} on:change={updateHand} />
 </div>
 
 <style>
@@ -38,7 +67,7 @@
         width: 100px;
     }
 
-    input {
+    .handVal {
         width: 50px;
     }
 </style>
