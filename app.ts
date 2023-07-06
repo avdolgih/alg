@@ -9,6 +9,7 @@ const mqtt = new Mqtt("ws://localhost:8080");
 mqtt.publish("/view/list", JSON.stringify(["P277GSM", "P239ITP"]));
 
 mqtt.subscribe("/view/selected", (s) => {
+    console.log(s);
     switch (s) {
         case "P277GSM":
             new P277GSM(mqtt);
