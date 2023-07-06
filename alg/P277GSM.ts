@@ -24,7 +24,7 @@ export default class P277GSM {
 
     async update() {
         while (true) {
-            await this.module1.update
+            await this.module1.update();
         }
     }
 }
