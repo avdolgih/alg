@@ -72,6 +72,7 @@ export default class CWT_MB308P implements Device {
     
     async update() {
         const di = await this.client.readDIs(this.addr, 0, 8);
+        console.log(di);
         this._di1.setVal(di[0]);
         this._di2.setVal(di[1]);
         this._di3.setVal(di[2]);
@@ -82,6 +83,7 @@ export default class CWT_MB308P implements Device {
         this._di8.setVal(di[7]);
 
         const ai = await this.client.readAIs(this.addr, 50, 16);
+        console.log(ai);
         this._ai1.setVal(ai[0]);
         this._ai2.setVal(ai[1]);
         this._ai3.setVal(ai[2]);
